@@ -1,0 +1,29 @@
+@import url(vendor/normalize.css);
+@import url(bocks/page/page.css);
+/*header*/
+@import url(bocks/header/header.css);
+@import url(bocks/header/__logo/header__logo.css);
+/*profile*/
+@import url(bocks/profile/profile.css);
+@import url(bocks/profile/__avatar/profile__avatar.css);
+@import url(bocks/profile/__image/profile__image.css);
+@import url(bocks/profile/__info/profile__info.css);
+@import url(bocks/profile/__name/profile__name.css);
+@import url(bocks/profile/__occupation/profile__occupation.css);
+@import url(bocks/profile/__edit/profile__edit.css);
+@import url(bocks/profile/__icon/profile__icon.css);
+/*add-button*/
+@import url(bocks/add-button/add-button.css);
+@import url(bocks/add-button/__icon/add-button__icon.css);
+/*elements*/
+@import url(bocks/elements/elements.css);
+/*element*/
+@import url(bocks/element/element.css);
+@import url(bocks/element/__image/element__image.css);
+@import url(bocks/element/__title/element__title.css);
+@import url(bocks/element/__footer-photo/element__footer-photo.css);
+/*icon-like*/
+@import url(bocks/icon-like/icon-like.css);
+/*footer*/
+@import url(bocks/footer/footer.css);
+@import url(bocks/footer/__copyright/footer__copyright.css);

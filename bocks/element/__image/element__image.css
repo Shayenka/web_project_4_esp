@@ -1,0 +1,9 @@
+.element__image {
+    border-radius: 10px 10px 0px 0px;
+    width: 100%;
+}
+
+.element__image:hover {
+    opacity: 0.9;
+    transition: opacity 0.3s linear 0.2s;
+}

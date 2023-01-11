@@ -1,0 +1,11 @@
+.profile__occupation {
+  border: 1px red solid;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #FFFFFF;
+  margin-top: 0;
+  margin-bottom: 0;
+}

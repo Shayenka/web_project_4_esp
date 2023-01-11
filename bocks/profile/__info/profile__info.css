@@ -1,0 +1,9 @@
+.profile__info {
+    border: 1px red solid;
+    max-width: 415px;
+    margin-top: 22px;
+    margin-left: 0;
+    margin-bottom: 24px;
+    flex-direction: row;
+    display: flex;
+}

@@ -1,0 +1,7 @@
+.elements {
+    border: 1px red solid;
+    display: grid;
+    max-width: 880px;
+    margin: 46.25px 200px 68px;
+    grid-template-columns: repeat(3, 1fr);
+}

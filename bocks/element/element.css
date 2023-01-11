@@ -1,0 +1,9 @@
+.element {
+    border-radius: 10px 10px 0px 0px;
+    display: grid;
+    max-width: 282px;
+    background: #FFFFFF;
+    grid-gap: 17px;
+    margin-bottom: 20px;
+    
+}

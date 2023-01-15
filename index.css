@@ -27,3 +27,13 @@
 /*footer*/
 @import url(bocks/footer/footer.css);
 @import url(bocks/footer/__copyright/footer__copyright.css);
+/*popup*/
+@import url(bocks/popup/popup.css);
+@import url(bocks/popup/_opened/popup_opened.css);
+@import url(bocks/popup/__container/popup__container.css);
+@import url(bocks/popup/__text/popup__text.css);
+@import url(bocks/popup/__title/popup__title.css);
+@import url(bocks/popup/__button/popup__button.css);
+@import url(bocks/popup/close-icon/popup__close-icon.css);
+/*close-icon*/
+@import url(bocks/close-icon/close-icon.css);

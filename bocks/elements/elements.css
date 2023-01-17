@@ -10,7 +10,7 @@
   .elements {
     grid-template-columns: repeat(2, 1fr);
     min-width: 282px;
-    margin: 36px 70px 50px;
+    margin: 36px auto 50px;
     justify-items: center;
     
   }

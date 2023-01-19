@@ -1,10 +1,9 @@
 .profile__image {
-    border: 1px red solid;
-    border-radius: 50%;
-    max-width: 120px;
-    max-height: 120px;
-    margin-top: 3.75px;
-    margin-left: 22.5px;
+  border-radius: 50%;
+  max-width: 120px;
+  max-height: 120px;
+  margin-top: 3.75px;
+  margin-left: 22.5px;
 
 }
 
@@ -13,11 +12,10 @@
     margin: 3.75px 25px;
     
   }
-
-  }
+}
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
-    .profile__image {
-      margin: 3.75px 23px;
-    }
+  .profile__image {
+    margin: 3.75px 23px;
   }
+}

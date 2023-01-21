@@ -6,7 +6,7 @@
   line-height: 1.5;
   color: #000000;
   margin-left: 36px;
-  margin-bottom: 54;;
+  margin-bottom: 40px;
  
 }
 
@@ -14,8 +14,9 @@
   .popup__title {
     font-size: 18px;
     line-height: 22px;
-    margin: 25px 22px 76px;
-    min-width: 238px;
+    max-width: 238px;
+    margin-bottom: 50px;
+    margin-left: 22px;
     
   }
 }

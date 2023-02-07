@@ -5,5 +5,25 @@
   position: fixed;
   top:0;
   left: 0;
-    
+  z-index: 3;
+}
+
+.popup > .popup__container {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+.popup:hover > .popup__container {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup > .image-show {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+.popup:hover > .image-show {
+  visibility: visible;
+  opacity: 1;
 }

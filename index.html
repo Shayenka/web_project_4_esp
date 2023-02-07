@@ -72,102 +72,68 @@
         </form>
 
         <section class="elements">
-          <div class="element">
-            <img
-              class="element__image"
-              src="./images/ValleYosemite.jpg"
-              alt="Paisaje del Valle Yosemite."
-            />
-            <div class="element__footer-photo">
-              <h3 class="element__title">Valle de Yosemite</h3>
+          <template id="templateCard">
+            <div class="element">
               <img
-                class="icon-like"
-                src="./images/like.svg"
-                alt="Icono de corazón"
+                class="element__delete"
+                src="./images/Papelera.svg"
+                alt="Icono de papelera para eliminar"
               />
+              <img
+                class="element__image"
+                id="src"
+                src=""
+                alt="Paisaje del Valle Yosemite."
+              />
+              <div class="element__footer-photo">
+                <h3 class="element__title"></h3>
+                <img
+                  class="icon-like"
+                  src="./images/like.svg"
+                  alt="Icono de corazón"
+                />
+              </div>
             </div>
-          </div>
+          </template>
+        </section>
 
-          <div class="element">
+        <section class="popup popup_opened" id="popupImage">
+          <div class="image-show">
             <img
-              class="element__image"
-              src="./images/LagoLouise.jpg"
-              alt="Paisaje del Valle Yosemite."
+              class="image-show__close-icon"
+              src="./images/CloseIcon.svg"
+              alt=""
             />
-            <div class="element__footer-photo">
-              <h3 class="element__title">Lago Louise</h3>
-              <img
-                class="icon-like"
-                src="./images/like.svg"
-                alt="Icono de corazón"
-              />
-            </div>
-          </div>
-
-          <div class="element">
-            <img
-              class="element__image"
-              src="./images/MontañasCalvas.jpg"
-              alt="Paisaje del Valle Yosemite."
-            />
-            <div class="element__footer-photo">
-              <h3 class="element__title">Montañas Calvas</h3>
-              <img
-                class="icon-like"
-                src="./images/like.svg"
-                alt="Icono de corazón"
-              />
-            </div>
-          </div>
-
-          <div class="element">
-            <img
-              class="element__image"
-              src="./images/Latemar.jpg"
-              alt="Paisaje del Valle Yosemite."
-            />
-            <div class="element__footer-photo">
-              <h3 class="element__title">Latemar</h3>
-              <img
-                class="icon-like"
-                src="./images/like.svg"
-                alt="Icono de corazón"
-              />
-            </div>
-          </div>
-
-          <div class="element">
-            <img
-              class="element__image"
-              src="./images/Vanoise.jpg"
-              alt="Paisaje del Valle Yosemite."
-            />
-            <div class="element__footer-photo">
-              <h3 class="element__title">Vanoise Nationa...</h3>
-              <img
-                class="icon-like"
-                src="./images/like.svg"
-                alt="Icono de corazón"
-              />
-            </div>
-          </div>
-
-          <div class="element">
-            <img
-              class="element__image"
-              src="./images/LagoBraies.jpg"
-              alt="Paisaje del Valle Yosemite."
-            />
-            <div class="element__footer-photo">
-              <h3 class="element__title">Lago di Braies</h3>
-              <img
-                class="icon-like"
-                src="./images/like.svg"
-                alt="Icono de corazón"
-              />
-            </div>
+            <img class="image-show__popup" src="" alt="" />
+            <h3 class="image-show__title"></h3>
           </div>
         </section>
+
+        <form class="popup popup_closed-element">
+          <fieldset class="popup__container">
+            <img
+              class="popup__close-icon popup__close-icon_element"
+              src="./images/CloseIcon.svg"
+              alt="Icono de una X para cerrar ventana emergente."
+            />
+            <label class="popup__title">Nuevo lugar</label>
+            <input
+              type="text"
+              id="titulo"
+              placeholder="Titulo"
+              class="popup__text"
+            />
+            <input
+              type="text"
+              id="enlace"
+              placeholder="Enlace a la imagen"
+              class="popup__text"
+            />
+            <button type="submit" id="buttonElement" class="popup__button">
+              Crear
+            </button>
+          </fieldset>
+        </form>
         <footer class="footer">
           <p class="footer__copyright">&copy; 2021 Alrededor de los EEUU</p>
         </footer>

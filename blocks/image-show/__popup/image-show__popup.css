@@ -1,0 +1,7 @@
+.image-show__popup {
+  max-width: 75vw;
+  max-height: 75vh;
+  position: absolute;
+  z-index: 3;
+    
+}

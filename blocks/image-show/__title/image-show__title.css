@@ -1,0 +1,13 @@
+.image-show__title {
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #FFFFFF;
+  margin-top: 525px;
+  position: absolute;
+  z-index: 5;
+  margin-left: 0;
+    
+}

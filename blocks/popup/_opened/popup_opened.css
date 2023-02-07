@@ -1,4 +1,24 @@
 .popup_opened {
   display: none;
-    
+
+}
+
+/*.popup_opened > .popup__container {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+.popup_opened:hover > .popup__container {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup_opened > .image-show {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+.popup_opened:hover > .image-show {
+  visibility: visible;
+  opacity: 1;
 }

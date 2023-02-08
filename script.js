@@ -1,4 +1,4 @@
-//Variables para abrir y cerrar ventada para editar perfil
+//Variables para abrir y cerrar ventana para editar perfil
 let buttonEdit = document.querySelector(".profile__edit");
 let buttonClose = document.querySelector(".popup__close-icon");
 let formElement = document.querySelector(".popup_opened");
@@ -9,7 +9,7 @@ let profileName = document.querySelector(".profile__name");
 let profileOccupation = document.querySelector(".profile__occupation");
 let buttonSubmit = document.querySelector(".popup__button");
 
-//Función para abrir y cerrar ventada para editar perfil
+//Función para abrir y cerrar ventana para editar perfil
 function openClosePopup() {
   formElement.classList.toggle("popup_opened");
     
@@ -29,7 +29,7 @@ function resetPopup() {
   inputName.value="";
   inputAbout.value="";
 }
-//Función para actualizar datos, borar campo de texto y cerrar ventada emergente
+//Función para actualizar datos, borar campo de texto y cerrar ventana emergente
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   setProfileValues();
@@ -68,21 +68,10 @@ const initialCards = [
     
   ]; 
 
-//Variables para abrir y cerrar ventada para agregar card
+//Variables para abrir y cerrar ventana para agregar card
 const buttonAdd = document.querySelector(".add-button");
 const formElementImage = document.querySelector(".popup_closed-element");
 const buttonCloseElement = document.querySelector(".popup__close-icon_element");
-const buttonElement = document.querySelector("#buttonElement")
-
-//Función para abrir y cerrar ventada para editar perfil
-function openClosePopupElement() {
-  formElementImage.classList.toggle("popup_closed-element");
-    
-}
-  buttonAdd.addEventListener ("click", openClosePopupElement);
-  buttonCloseElement.addEventListener ("click", openClosePopupElement);
-
-
 
 //Variables para ingresar card
 const elements = document.querySelector(".elements");
@@ -93,67 +82,75 @@ const imageShow = document.querySelector(".image-show__popup");
 const imageText = document.querySelector(".image-show__title");
 const popupImage = document.querySelector("#popupImage");
 const buttonCloseImage = document.querySelector(".image-show__close-icon");
+const buttonElement = document.querySelector("#buttonElement");
+
+//Función para abrir y cerrar ventana para agregar card
+function openClosePopupElement() {
+  formElementImage.classList.toggle("popup_closed-element");  
+}
+
+buttonAdd.addEventListener ("click", openClosePopupElement);
+buttonCloseElement.addEventListener ("click", openClosePopupElement);
 
 //Función para ingresar nueva card
-  function createCard(nameCard, linkCard) {
-    const addCard = templateCard.content.cloneNode(true);
-    const likeButton = addCard.querySelector(".icon-like");
-    const buttonDelete = addCard.querySelector(".element__delete");
-    const cardImage = addCard.querySelector(".element__image");
-    addCard.querySelector(".element__title").textContent = nameCard;
-    addCard.querySelector(".element__image").src = linkCard;
+function createCard(nameCard, linkCard) {
+  const addCard = templateCard.content.cloneNode(true);
+  const likeButton = addCard.querySelector(".icon-like");
+  const buttonDelete = addCard.querySelector(".element__delete");
+  const cardImage = addCard.querySelector(".element__image");
+  addCard.querySelector(".element__title").textContent = nameCard;
+  addCard.querySelector(".element__image").src = linkCard;
 
-    
-    likeButton.addEventListener ("click", function() {
-      likeButton.classList.toggle("icon-like_black");
-    })
+//Función para dar like a la card
+likeButton.addEventListener ("click", function() {
+  likeButton.classList.toggle("icon-like_black");
+})
 
-    buttonDelete.addEventListener ("click", function() {
-      const cardDelete = buttonDelete.closest(".element");
-      cardDelete.remove();
-    })
- 
-    cardImage.addEventListener("click", ()=> handleCardImage(linkCard, nameCard));
-    /*image.addEventListener ("click", function() {
-     // imageShow.src= linkCard;
-     // imageText.textContent = nameCard;
-      //toggleImage();
-      //buttonCloseImage.addEventListener("click", toggleImage);
-    //})*/
+//Función para eliminar card
+buttonDelete.addEventListener ("click", function() {
+  const cardDelete = buttonDelete.closest(".element");
+  cardDelete.remove();
+})
 
-    return addCard;
-  }
+//Función que llama handleCardImage para ampliar imagen
+cardImage.addEventListener("click", ()=> handleCardImage(linkCard, nameCard));
 
-  function handleCardImage(linkCard, nameCard) {
-    imageShow.src= linkCard;
-      imageText.textContent = nameCard;
-      toggleImage();
-  }
+  return addCard;
+}
 
-  function toggleImage() {
-    popupImage.classList.toggle("popup_opened");
-  }
-  
-  buttonCloseImage.addEventListener("click", toggleImage);
-
-  initialCards.forEach(function(element) {
-    const cardCreated = createCard(element.name, element.link);
-    elements.append(cardCreated);
-   });
-  
-//Función para borrar los campos de texto en la ventana de agregar card
-   function resetPopupElement() {
-     inputTitle.value="";
-     inputEnlace.value="";
-    }
+//Función que llama a createCard
+initialCards.forEach(function(element) {
+  const cardCreated = createCard(element.name, element.link);
+  elements.append(cardCreated);
+});
 
 //Función para agregar card, borrar campos de texto y cerrar ventana emergente
-   buttonElement.addEventListener ("click", function(evt){
-    evt.preventDefault();
-    const cardCreated = createCard(inputTitle.value, inputEnlace.value)
-    elements.prepend(cardCreated);
-    resetPopupElement();
-    openClosePopupElement();
+buttonElement.addEventListener ("click", function(evt){
+  evt.preventDefault();
+  const cardCreated = createCard(inputTitle.value, inputEnlace.value)
+  elements.prepend(cardCreated);
+  resetPopupElement();
+  openClosePopupElement();
+});
 
-  });
+//Función para borrar los campos de texto en la ventana de agregar card
+function resetPopupElement() {
+  inputTitle.value="";
+  inputEnlace.value="";
+}
+ 
+//Función para ampliar imagen de la card
+function handleCardImage(linkCard, nameCard) {
+  imageShow.src= linkCard;
+  imageText.textContent = nameCard;
+  toggleImage();
+}
+
+function toggleImage() {
+  popupImage.classList.toggle("popup_opened");
+}
+  
+buttonCloseImage.addEventListener("click", toggleImage);
+
+  
   

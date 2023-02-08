@@ -7,14 +7,3 @@
   z-index: 5;
   
 }
- 
-/*.image-show__close-icon > .image-show {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s, opacity 0.5s linear;
-}
-
-.image-show__close-icon:hover  > .image-show {
-  visibility: visible;
-  opacity: 1;
-}

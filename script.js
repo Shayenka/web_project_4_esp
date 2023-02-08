@@ -1,13 +1,13 @@
 //Variables para abrir y cerrar ventana para editar perfil
-let buttonEdit = document.querySelector(".profile__edit");
-let buttonClose = document.querySelector(".popup__close-icon");
-let formElement = document.querySelector(".popup_opened");
+const buttonEdit = document.querySelector(".profile__edit");
+const buttonClose = document.querySelector(".popup__close-icon");
+const formElement = document.querySelector(".popup_opened");
 //Variables para ingresar datos en la ventana del perfil
-let inputName = document.querySelector("#name");
-let inputAbout = document.querySelector("#about");
-let profileName = document.querySelector(".profile__name");
-let profileOccupation = document.querySelector(".profile__occupation");
-let buttonSubmit = document.querySelector(".popup__button");
+const inputName = document.querySelector("#name");
+const inputAbout = document.querySelector("#about");
+const profileName = document.querySelector(".profile__name");
+const profileOccupation = document.querySelector(".profile__occupation");
+const buttonSubmit = document.querySelector(".popup__button");
 
 //Función para abrir y cerrar ventana para editar perfil
 function openClosePopup() {

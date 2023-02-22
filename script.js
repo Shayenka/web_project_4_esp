@@ -1,7 +1,7 @@
 //Variables para abrir y cerrar ventana para editar perfil
 const buttonEdit = document.querySelector(".profile__edit");
 const buttonClose = document.querySelector(".popup__close-icon");
-const formElement = document.querySelector(".popup_opened");
+const formElement = document.querySelector(".popup_closed");
 //Variables para ingresar datos en la ventana del perfil
 const inputName = document.querySelector("#name");
 const inputAbout = document.querySelector("#about");
@@ -11,7 +11,7 @@ const buttonSubmit = document.querySelector(".popup__button");
 
 //Función para abrir y cerrar ventana para editar perfil
 function openClosePopup() {
-  formElement.classList.toggle("popup_opened");
+  formElement.classList.toggle("popup_closed");
     
 }
 
@@ -147,10 +147,30 @@ function handleCardImage(linkCard, nameCard) {
 }
 
 function toggleImage() {
-  popupImage.classList.toggle("popup_opened");
+  popupImage.classList.toggle("popup_closed");
 }
   
 buttonCloseImage.addEventListener("click", toggleImage);
 
   
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -64,7 +64,28 @@ const enableValidation = (elementsEnableValidation) => {
   });
 };
 
-enableValidation({
+
+//const popupClose = popup.querySelector(".popup_closed");
+
+const popup = document.querySelector(enableValidation.formSelector);
+
+function closePopup(evt) {
+    if (evt.target.classList.contains("popup")) {
+      popup.classList.add("popup_closed");
+    }
+  }
+
+  popup.addEventListener('click', closePopup);
+
+  function closePopupEsc(evt) {
+    if (evt.key === "Escape") {
+        popup.classList.add("popup_closed");
+      }
+  }
+
+  document.addEventListener("keydown", closePopupEsc);
+
+  enableValidation({
     formSelector: ".popup",
     inputSelector: ".popup__text",
     submitButtonSelector: ".popup__button",
@@ -72,33 +93,3 @@ enableValidation({
     inputErrorClass: "popup__text_error",
     errorClass: "popup__input-error"
 });
-
-
-// const popup = document.querySelector(enableValidation.formSelector);
-// const popupClose = popup.querySelector(".popup_closed");
-
-//  function closePopup(evt) {
-//       if (evt.target === popup) {
-//         popup.classList.add(popupClose);
-//       }
-//   }
-
-//   popup.addEventListener('click', closePopup);
-
-//   function closePopupEsc(evt) {
-//     if (evt.key === "Escape") {
-//         popup.classList.add(popupClose);
-//       }
-//   }
-
-//   document.addEventListener("keydown", closePopupEsc);
-
-//   enableValidation({
-//     formSelector: ".popup",
-//     inputSelector: ".popup__text",
-//     submitButtonSelector: ".popup__button",
-//     inactiveButtonClass: "popup__button_inactive",
-//     inputErrorClass: "popup__text_error",
-//     errorClass: "popup__input-error"
-//   });
-  

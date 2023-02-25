@@ -65,27 +65,7 @@ const enableValidation = (elementsEnableValidation) => {
 };
 
 
-//const popupClose = popup.querySelector(".popup_closed");
-
-const popup = document.querySelector(enableValidation.formSelector);
-
-function closePopup(evt) {
-    if (evt.target.classList.contains("popup")) {
-      popup.classList.add("popup_closed");
-    }
-  }
-
-  popup.addEventListener('click', closePopup);
-
-  function closePopupEsc(evt) {
-    if (evt.key === "Escape") {
-        popup.classList.add("popup_closed");
-      }
-  }
-
-  document.addEventListener("keydown", closePopupEsc);
-
-  enableValidation({
+enableValidation({
     formSelector: ".popup",
     inputSelector: ".popup__text",
     submitButtonSelector: ".popup__button",
@@ -93,3 +73,39 @@ function closePopup(evt) {
     inputErrorClass: "popup__text_error",
     errorClass: "popup__input-error"
 });
+
+//Función para cerrar la ventana emergente haciendo clic en la superposición
+const popups = document.querySelectorAll(".popup");
+
+function closePopup(evt) {
+  if (evt.target.classList.contains("popup")) {
+    evt.target.classList.add("popup_closed");
+  }
+}
+
+popups.forEach(popup => {
+  popup.addEventListener('click', closePopup);
+
+})
+
+//Función para cerrar la ventana emergente pulsando Esc
+function closePopupEsc(evt) {
+  if (evt.key === "Escape") {
+    popups.forEach(popup => popup.classList.add("popup_closed"));
+  }
+}
+
+document.addEventListener("keydown", closePopupEsc);
+
+
+
+
+
+
+
+
+
+
+
+
+

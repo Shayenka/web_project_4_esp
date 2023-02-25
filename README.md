@@ -14,4 +14,8 @@ Es una página interactiva en la que los usuarios pueden añadir, eliminar o dar
 
 ### \* JavaScript (declarar variables, declarar y llamar funciones, DOM).
 
+### \* Validación de formularios.
+
+### \* Cerrar la ventana emergente haciendo clic en la superposición y pulsando Esc.
+
 ### Enlace del proyecto en GitHub Pages: https://github.com/Shayenka/web_project_4_esp

@@ -18,4 +18,4 @@ Es una página interactiva en la que los usuarios pueden añadir, eliminar o dar
 
 ### \* Cerrar la ventana emergente haciendo clic en la superposición y pulsando Esc.
 
-### Enlace del proyecto en GitHub Pages: https://github.com/Shayenka/web_project_4_esp
+### Enlace del proyecto en GitHub Pages: https://shayenka.github.io/web_project_4_esp/

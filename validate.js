@@ -24,11 +24,14 @@ const checkInputValidity = (formElement, inputElement, elementsEnableValidation)
   }
 };
 
-const hasInvalidInput = (inputList) => {
-  return inputList.some((inputElement) => {
-   return !inputElement.validity.valid;
- });
-};
+const hasInvalidInput = (inputList) => inputList.some((inputElement) => !inputElement.validity.valid);
+
+
+// const hasInvalidInput = (inputList) => {
+//     return inputList.some((inputElement) => {
+//      return !inputElement.validity.valid;
+//    });
+//   };
 
 const toggleButtonState = (inputList, buttonElement, elementsEnableValidation) => {
   if (hasInvalidInput(inputList)) {

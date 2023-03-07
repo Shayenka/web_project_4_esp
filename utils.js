@@ -47,9 +47,9 @@ function setProfileValues() {
 //POPUP CARDS
 
 //Variables para abrir y cerrar ventana para agregar card
-const formElementCard = document.querySelector(".popup_closed-element"); //formElementImage
-const ButtonAddCardPopup = document.querySelector(".add-button"); //buttonAdd
-const buttonCloseCardPopup = document.querySelector(".popup__close-icon_element"); //buttonCloseElement 
+const formElementCard = document.querySelector(".popup_closed-element"); 
+const ButtonAddCardPopup = document.querySelector(".add-button"); 
+const buttonCloseCardPopup = document.querySelector(".popup__close-icon_element"); 
 
 //Variables para agregar card
 const buttonAddCard = document.querySelector("#buttonElement");
@@ -65,6 +65,12 @@ function togglePopupAddCard() {
 ButtonAddCardPopup.addEventListener ("click", togglePopupAddCard);
 buttonCloseCardPopup.addEventListener ("click", togglePopupAddCard);
 
+// //Función para borrar los campos de texto en la ventana de agregar card
+function resetPopupAddCard() {
+    inputTitle.value="";
+    inputLink.value="";
+  }
+
 //Función para agregar card, borrar campos de texto y cerrar ventana emergente
 buttonAddCard.addEventListener ("click", function(evt){
       evt.preventDefault();
@@ -73,12 +79,6 @@ buttonAddCard.addEventListener ("click", function(evt){
       resetPopupAddCard();
       togglePopupAddCard();
 });
-
-// //Función para borrar los campos de texto en la ventana de agregar card
-function resetPopupAddCard() {
-  inputTitle.value="";
-  inputLink.value="";
-}
 
 
 
@@ -103,3 +103,21 @@ function resetPopupAddCard() {
 // }
   
 // buttonCloseImage.addEventListener("click", toggleImage)
+
+
+
+// _imageShowPopup() {
+//     this._cardElement.addEventListener("click", (data)=> {
+//       this._popupImageShow = document.querySelector("#popupImage");
+//       this._imageShow = document.querySelector(".image-show__popup");
+//       this._imageShow.src = data.link;
+//       this._imageText = document.querySelector(".element__title");
+//       this._imageText.textContent = data.name;
+//       this._buttonCloseImageShow = document.querySelector(".image-show__close-icon");
+//       this._toggleImageShow();
+// });
+
+
+// this._buttonCloseImageShow.addEventListener("click", this._toggleImageShow); 
+
+// }

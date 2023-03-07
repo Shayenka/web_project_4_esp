@@ -7,7 +7,7 @@ const templateCard = document.querySelector("#templateCard");
 export default class Card {
   constructor (data) {
       this._name = data.name;
-      this._link = data.link;
+      this._link = data.link
       //this._cardSelector = cardSelector;
   }
 
@@ -50,26 +50,6 @@ _deleteCard() {
 //   })
 
 //   this._buttonCloseImageShow.addEventListener("click", this._toggleImageShow); 
-// }
-
-
-
-
-
-// _imageShowPopup() {
-//     this._cardElement.addEventListener("click", (data)=> {
-//       this._popupImageShow = document.querySelector("#popupImage");
-//       this._imageShow = document.querySelector(".image-show__popup");
-//       this._imageShow.src = data.link;
-//       this._imageText = document.querySelector(".element__title");
-//       this._imageText.textContent = data.name;
-//       this._buttonCloseImageShow = document.querySelector(".image-show__close-icon");
-//       this._toggleImageShow();
-// });
-
-
-// this._buttonCloseImageShow.addEventListener("click", this._toggleImageShow); 
-
 // }
 
 _setCardPropetties() {

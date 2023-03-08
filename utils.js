@@ -74,7 +74,7 @@ function resetPopupAddCard() {
 //Función para agregar card, borrar campos de texto y cerrar ventana emergente
 buttonAddCard.addEventListener ("click", function(evt){
       evt.preventDefault();
-      const cardCreated = new Card(inputTitle.value, inputLink.value).generateCard();
+      const cardCreated = new Card({name: inputTitle.value, link: inputLink.value}).generateCard();
       elementsCard.prepend(cardCreated);
       resetPopupAddCard();
       togglePopupAddCard();
@@ -103,6 +103,12 @@ buttonAddCard.addEventListener ("click", function(evt){
 // }
   
 // buttonCloseImage.addEventListener("click", toggleImage)
+
+
+
+
+
+
 
 
 

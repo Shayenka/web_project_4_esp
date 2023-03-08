@@ -18,9 +18,12 @@ _getTemplate() {
 }
 
 _likeCard() {
-  this._likeButton.addEventListener ("click", () =>  {
     this._likeButton.classList.toggle("icon-like_black");
-})
+}
+
+_setEventsListeners() {
+    this._likeButton.addEventListener ("click", this._likeCard());
+   // this._buttonDelete.addEventListener ("click", ())
 }
 
 _deleteCard() {
@@ -30,9 +33,9 @@ _deleteCard() {
       })
 }
 
-// _toggleImageShow() {
-//     this._popupImageShow.classList.toggle("popup_closed");
-//    }
+_toggleImageShow() {
+    this._popupImageShow.classList.toggle("popup_closed");
+   }
 
 
 // _imageShowPopup() {
@@ -64,7 +67,7 @@ _setCardPropetties() {
 generateCard() {
   this._cardElement = this._getTemplate();
   this._setCardPropetties();
-  this._likeCard();
+  this._setEventsListeners()
   this._deleteCard();
   //this._imageShowPopup();
 

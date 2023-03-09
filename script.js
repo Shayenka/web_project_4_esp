@@ -1,159 +1,121 @@
+import Card from "./Card.js";
+import {initialCards} from "./constants.js";
+import FormValidator from "./FormValidator.js";
+import {formElementProfile, popups, inputName, inputAbout, profileName, profileOccupation, formElementCard, inputTitle, inputLink, 
+        elementsCard} from "./constants.js";
+//import {popupImageShow, imageShow, imageText, imageCards} from "./constants.js";
+//Función para crear nuevas cards
+function renderCards() {
+  initialCards.forEach((data) => {
+    const cardCreated = new Card(data).generateCard();
+    elementsCard.append(cardCreated);
+  });
 
-// //Variables para abrir y cerrar ventana para editar perfil
-// const buttonEdit = document.querySelector(".profile__edit");
-// const buttonClose = document.querySelector(".popup__close-icon");
-// const formElement = document.querySelector(".popup_closed");
-//Variables para ingresar datos en la ventana del perfil
-// const inputName = document.querySelector("#name");
-// const inputAbout = document.querySelector("#about");
-// const profileName = document.querySelector(".profile__name");
-// const profileOccupation = document.querySelector(".profile__occupation");
-// const buttonSubmit = document.querySelector(".popup__button");
+}
+
+renderCards();
+
+//Función que llama la clase FormValidator
+const Validator = new FormValidator({
+    formSelector: ".popup",
+    inputSelector: ".popup__text",
+    submitButtonSelector: ".popup__button",
+    inactiveButtonClass: "popup__button_inactive",
+    inputErrorClass: "popup__text_error",
+    errorClass: "popup__input-error"
+});
+
+Validator.enableValidation();
+
+//Función para cerrar la ventana emergente haciendo clic en la superposición
+function closePopup(evt) {
+  if (evt.target.classList.contains("popup")) {
+    evt.target.classList.add("popup_closed");
+  }
+}
+
+popups.forEach(popup => {
+  popup.addEventListener('click', closePopup);
+
+})
+
+//Función para cerrar la ventana emergente pulsando Esc
+function closePopupEsc(evt) {
+  if (evt.key === "Escape") {
+    popups.forEach(popup => popup.classList.add("popup_closed"));
+  }
+}
+
+document.addEventListener("keydown", closePopupEsc);
+
+//POPUP PERFIL
 
 //Función para abrir y cerrar ventana para editar perfil
-// function openClosePopup() {
-//   formElement.classList.toggle("popup_closed");
+export function togglePopupProfile() {
+  formElementProfile.classList.toggle("popup_closed");
     
-// }
+}
 
-// buttonEdit.addEventListener ("click", openClosePopup);
-// buttonClose.addEventListener ("click", openClosePopup);
+//Función para actualizar datos en la ventana del perfil
+function setProfileValues() {
+  profileName.textContent = inputName.value;
+  profileOccupation.textContent = inputAbout.value;
+}
 
-// //Función para actualizar datos en la ventana del perfil
-// function setProfileValues() {
-//   profileName.textContent = inputName.value;
-//   profileOccupation.textContent = inputAbout.value;
-// }
+//Función para borrar los campos de texto en la ventana de editar perfil
+function resetPopupProfile() {
+  inputName.value="";
+  inputAbout.value="";
+}
+//Función para actualizar datos, borrar campo de texto y cerrar ventana emergente
+export function handleProfileFormSubmit(evt) {
+  evt.preventDefault();
+  setProfileValues();
+  togglePopupProfile();
+  resetPopupProfile();
+}
 
-// //Función para borrar los campos de texto en la ventana de editar perfil
-// function resetPopup() {
-//   inputName.value="";
-//   inputAbout.value="";
-// }
-// //Función para actualizar datos, borar campo de texto y cerrar ventana emergente
-// function handleProfileFormSubmit(evt) {
-//   evt.preventDefault();
-//   setProfileValues();
-//   openClosePopup();
-//   resetPopup();
-// }
+//POPUP CARDS
 
-// buttonSubmit.addEventListener ("click", handleProfileFormSubmit);
+//Función para abrir y cerrar ventana para agregar card
+export function togglePopupAddCard() {
+  formElementCard.classList.toggle("popup_closed-element");  
+}
 
-//Array de objetos de las imágenes
-export const initialCards = [
-    {
-      name: "Valle de Yosemite",
-      link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
-    },
-    {
-      name: "Lago Louise",
-      link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
-    },
-    {
-      name: "Montañas Calvas",
-      link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
-    },
-    {
-      name: "Latemar",
-      link: "https://code.s3.yandex.net/web-code/latemar.jpg"
-    },
-    {
-      name: "Parque Nacional de la Vanoise",
-      link: "https://code.s3.yandex.net/web-code/vanoise.jpg"
-    },
-    {
-      name: "Lago di Braies",
-      link: "https://code.s3.yandex.net/web-code/lago.jpg"
-    },
-    
-  ]; 
+//Función para borrar los campos de texto en la ventana de agregar card
+function resetPopupAddCard() {
+  inputTitle.value="";
+  inputLink.value="";
+}
+//Función para agregar card, borrar campos de texto y cerrar ventana emergente
+export function newCard(evt) {
+  evt.preventDefault();
+  const cardCreated = new Card({name: inputTitle.value, link: inputLink.value}).generateCard();
+  elementsCard.prepend(cardCreated);
+  resetPopupAddCard();
+  togglePopupAddCard();
+}
 
-// //Variables para abrir y cerrar ventana para agregar card
-// const buttonAdd = document.querySelector(".add-button");
-// const formElementImage = document.querySelector(".popup_closed-element");
-// const buttonCloseElement = document.querySelector(".popup__close-icon_element");
+//Variables para ampliar card
+const imageCards = document.querySelectorAll(".element__image");
+const popupImageShow = document.querySelector("#popupImage");
+const imageShow = document.querySelector(".image-show__popup");
+const imageText = document.querySelector(".element__title");
 
-// //Variables para ingresar card
-// const elements = document.querySelector(".elements");
-// const templateCard = document.querySelector("#templateCard");
-// const inputTitle = document.querySelector("#titulo");
-// const inputEnlace = document.querySelector("#enlace");
-// const imageShow = document.querySelector(".image-show__popup");
-// const imageText = document.querySelector(".image-show__title");
-// const popupImage = document.querySelector("#popupImage");
-// const buttonCloseImage = document.querySelector(".image-show__close-icon");
-// const buttonElement = document.querySelector("#buttonElement");
+export function toggleImageShow() {
+  popupImageShow.classList.toggle("popup_closed");
+}
+//Función para ampliar card
+export function handleCardImage(event){
+  imageCards.forEach((element) => {
+    if (event.target === element) {
+      imageShow.src = event.target.src;
+      imageText.textContent = event.target.closest(".element").querySelector(".element__title").textContent;
+      toggleImageShow();
+    }
+  });
+}
 
-// //Función para abrir y cerrar ventana para agregar card
-// function openClosePopupElement() {
-//   formElementImage.classList.toggle("popup_closed-element");  
-// }
-
-// buttonAdd.addEventListener ("click", openClosePopupElement);
-// buttonCloseElement.addEventListener ("click", openClosePopupElement);
-
-// //Función para ingresar nueva card
-// function createCard(nameCard, linkCard) {
-//   const addCard = templateCard.content.cloneNode(true);
-//   const likeButton = addCard.querySelector(".icon-like");
-//   const buttonDelete = addCard.querySelector(".element__delete");
-//   const cardImage = addCard.querySelector(".element__image");
-//   addCard.querySelector(".element__title").textContent = nameCard;
-//   addCard.querySelector(".element__image").src = linkCard;
-
-// //Función para dar like a la card
-// likeButton.addEventListener ("click", function() {
-//   likeButton.classList.toggle("icon-like_black");
-// })
-
-// //Función para eliminar card
-// buttonDelete.addEventListener ("click", function() {
-//   const cardDelete = buttonDelete.closest(".element");
-//   cardDelete.remove();
-// })
-
-// //Función que llama handleCardImage para ampliar imagen
-// cardImage.addEventListener("click", ()=> handleCardImage(linkCard, nameCard));
-
-//   return addCard;
-// }
-
-// //Función que llama a createCard
-// initialCards.forEach(function(element) {
-//   const cardCreated = createCard(element.name, element.link);
-//   elements.append(cardCreated);
-// });
-
-// //Función para agregar card, borrar campos de texto y cerrar ventana emergente
-// buttonElement.addEventListener ("click", function(evt){
-//   evt.preventDefault();
-//   const cardCreated = createCard(inputTitle.value, inputEnlace.value)
-//   elements.prepend(cardCreated);
-//   resetPopupElement();
-//   openClosePopupElement();
-// });
-
-// //Función para borrar los campos de texto en la ventana de agregar card
-// function resetPopupElement() {
-//   inputTitle.value="";
-//   inputEnlace.value="";
-// }
- 
-// //Función para ampliar imagen de la card
-// function handleCardImage(linkCard, nameCard) {
-//   imageShow.src= linkCard;
-//   imageText.textContent = nameCard;
-//   toggleImage();
-// }
-
-// function toggleImage() {
-//   popupImage.classList.toggle("popup_closed");
-// }
-  
-// buttonCloseImage.addEventListener("click", toggleImage);
-
-  
 
 
 

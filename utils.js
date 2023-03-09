@@ -1,129 +1,35 @@
-import Card from "./Card.js";
+//import card from "./Card.js";
+import {togglePopupProfile, handleProfileFormSubmit, togglePopupAddCard, newCard, handleCardImage, toggleImageShow} from "./script.js";
+import {buttonEditProfile, buttonClosePopupProfile, buttonSubmitProfile, ButtonAddCardPopup, buttonCloseCardPopup, buttonAddCard,
+       } from "./constants.js";
+//import {imageCards, buttonCloseImageShow} from "./constants.js";
 
 //POPUP PERFIL
+//Controlador de evento para abrir/cerrar ventana modal para editar perfil
 
-//Variables para abrir y cerrar ventana para editar perfil
-const formElementProfile = document.querySelector(".popup_closed");
-const buttonEditProfile = document.querySelector(".profile__edit");
-const buttonClosePopupProfile = document.querySelector(".popup__close-icon");
-
-//Función para abrir y cerrar ventana para editar perfil
-function togglePopupProfile() {
-    formElementProfile.classList.toggle("popup_closed");
-      
-  }
-  
   buttonEditProfile.addEventListener ("click", togglePopupProfile);
   buttonClosePopupProfile.addEventListener ("click", togglePopupProfile);
 
-//Variables para ingresar datos en la ventana del perfil
-const inputName = document.querySelector("#name");
-const inputAbout = document.querySelector("#about");
-const profileName = document.querySelector(".profile__name");
-const profileOccupation = document.querySelector(".profile__occupation");
-const buttonSubmitProfile = document.querySelector(".popup__button");
-
-//Función para actualizar datos en la ventana del perfil
-function setProfileValues() {
-    profileName.textContent = inputName.value;
-    profileOccupation.textContent = inputAbout.value;
-  }
-  
-  //Función para borrar los campos de texto en la ventana de editar perfil
-  function resetPopupProfile() {
-    inputName.value="";
-    inputAbout.value="";
-  }
-  //Función para actualizar datos, borar campo de texto y cerrar ventana emergente
-  function handleProfileFormSubmit(evt) {
-    evt.preventDefault();
-    setProfileValues();
-    togglePopupProfile();
-    resetPopupProfile();
-  }
-  
-  buttonSubmitProfile.addEventListener ("click", handleProfileFormSubmit);
+//Controlador de evento para actualizar datos en la ventana modal para editar perfil 
+buttonSubmitProfile.addEventListener ("click", handleProfileFormSubmit);
 
 //POPUP CARDS
-
-//Variables para abrir y cerrar ventana para agregar card
-const formElementCard = document.querySelector(".popup_closed-element"); 
-const ButtonAddCardPopup = document.querySelector(".add-button"); 
-const buttonCloseCardPopup = document.querySelector(".popup__close-icon_element"); 
-
-//Variables para agregar card
-const buttonAddCard = document.querySelector("#buttonElement");
-const inputTitle = document.querySelector("#titulo");
-const inputLink = document.querySelector("#enlace");
-const elementsCard = document.querySelector(".elements"); //importar de card
-
-//Función para abrir y cerrar ventana para agregar card
-function togglePopupAddCard() {
-    formElementCard.classList.toggle("popup_closed-element");  
-}
-
+//Controlador de evento para abrir/cerrar ventana modal para agregar card
 ButtonAddCardPopup.addEventListener ("click", togglePopupAddCard);
 buttonCloseCardPopup.addEventListener ("click", togglePopupAddCard);
 
-// //Función para borrar los campos de texto en la ventana de agregar card
-function resetPopupAddCard() {
-    inputTitle.value="";
-    inputLink.value="";
-  }
+//Controlador de evento para agregar card
+buttonAddCard.addEventListener ("click", newCard);
 
-//Función para agregar card, borrar campos de texto y cerrar ventana emergente
-buttonAddCard.addEventListener ("click", function(evt){
-      evt.preventDefault();
-      const cardCreated = new Card({name: inputTitle.value, link: inputLink.value}).generateCard();
-      elementsCard.prepend(cardCreated);
-      resetPopupAddCard();
-      togglePopupAddCard();
-});
+//Variables para ampliar card
+const imageCards = document.querySelectorAll(".element__image");
+const buttonCloseImageShow = document.querySelector(".image-show__close-icon");
 
+//Controlador de evento para ampliar card
+imageCards.forEach((card) => {
+    card.addEventListener("click", handleCardImage);
+  });
+
+buttonCloseImageShow.addEventListener("click", toggleImageShow);
 
 
-
-// const imageShow = document.querySelector(".image-show__popup");
-// const imageText = document.querySelector(".image-show__title");
-// const popupImage = document.querySelector("#popupImage");
-// const buttonCloseImage = document.querySelector(".image-show__close-icon");
-
-
-// cardImage.addEventListener("click", ()=> handleCardImage(linkCard, nameCard));
-// //Función para ampliar imagen de la card
-// function handleCardImage(linkCard, nameCard) {
-//   imageShow.src= linkCard;
-//   imageText.textContent = nameCard;
-//   toggleImage();
-// }
-
-
-// function toggleImage() {
-//   popupImage.classList.toggle("popup_closed");
-// }
-  
-// buttonCloseImage.addEventListener("click", toggleImage)
-
-
-
-
-
-
-
-
-
-// _imageShowPopup() {
-//     this._cardElement.addEventListener("click", (data)=> {
-//       this._popupImageShow = document.querySelector("#popupImage");
-//       this._imageShow = document.querySelector(".image-show__popup");
-//       this._imageShow.src = data.link;
-//       this._imageText = document.querySelector(".element__title");
-//       this._imageText.textContent = data.name;
-//       this._buttonCloseImageShow = document.querySelector(".image-show__close-icon");
-//       this._toggleImageShow();
-// });
-
-
-// this._buttonCloseImageShow.addEventListener("click", this._toggleImageShow); 
-
-// }

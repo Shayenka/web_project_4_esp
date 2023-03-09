@@ -1,5 +1,5 @@
 
-class FormValidator {
+export default class FormValidator {
   constructor (enableValidation) {
     this._enableValidation = enableValidation;
     }
@@ -68,15 +68,3 @@ enableValidation = () => {
   };
 
 }
-
-
-const Validator = new FormValidator({
-    formSelector: ".popup",
-    inputSelector: ".popup__text",
-    submitButtonSelector: ".popup__button",
-    inactiveButtonClass: "popup__button_inactive",
-    inputErrorClass: "popup__text_error",
-    errorClass: "popup__input-error"
-});
-
-Validator.enableValidation();

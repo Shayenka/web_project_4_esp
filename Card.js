@@ -1,11 +1,7 @@
-import {initialCards} from "./script.js";
-const elementsCard = document.querySelector(".elements"); //exportar a utils
-const templateCard = document.querySelector("#templateCard");
-
-
+import templateCard from "./constants.js";
 
 export default class Card {
-  constructor (data) {
+  constructor (data, cardSelector) {
       this._name = data.name;
       this._link = data.link
       //this._cardSelector = cardSelector;
@@ -21,41 +17,17 @@ _likeCard() {
     this._likeButton.classList.toggle("icon-like_black");
 }
 
-_setEventsListeners() {
-    this._likeButton.addEventListener ("click", this._likeCard());
-   // this._buttonDelete.addEventListener ("click", ())
-}
-
 _deleteCard() {
-  this._buttonDelete.addEventListener ("click", () =>  {
-    const cardDelete = this._buttonDelete.closest(".element");
-      cardDelete.remove();
-      })
-}
-
-_toggleImageShow() {
-    this._popupImageShow.classList.toggle("popup_closed");
+    this._buttonDelete.closest(".element").remove();
+   
    }
 
+_setEventsListeners() {
+    this._likeButton.addEventListener ("click", ()  => this._likeCard());
+    this._buttonDelete.addEventListener ("click", () => this._deleteCard());
+}
 
-// _imageShowPopup() {
-//   this._cardElement.addEventListener("click", (event) => {
-//     if (event.target.classList.contains("element__image")) {
-//         this._popupImageShow = document.querySelector("#popupImage");
-//         this._imageShow = document.querySelector(".image-show__popup");
-//         this._imageShow.src = this._link;
-//         this._imageText = document.querySelector(".element__title");
-//         this._imageText.textContent = this._name;
-//         this._buttonCloseImageShow = document.querySelector(".image-show__close-icon");
-        
-//         this._toggleImageShow();
-//     }
-//   })
-
-//   this._buttonCloseImageShow.addEventListener("click", this._toggleImageShow); 
-// }
-
-_setCardPropetties() {
+_setCardProperties() {
   this._cardImage = this._cardElement.querySelector(".element__image");
   this._cardImage.src = this._link;
   this._cardTitle = this._cardElement.querySelector(".element__title");
@@ -66,18 +38,10 @@ _setCardPropetties() {
 
 generateCard() {
   this._cardElement = this._getTemplate();
-  this._setCardPropetties();
-  this._setEventsListeners()
-  this._deleteCard();
+  this._setCardProperties();
+  this._setEventsListeners();
   //this._imageShowPopup();
 
   return this._cardElement;
 }
-
 }
-
-initialCards.forEach((data) => {
-  const cardCreated = new Card(data).generateCard();
-  elementsCard.append(cardCreated);
-});
-

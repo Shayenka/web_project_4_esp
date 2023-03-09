@@ -71,31 +71,43 @@
 //     errorClass: "popup__input-error"
 // });
 
-//Función para cerrar la ventana emergente haciendo clic en la superposición
-const popups = document.querySelectorAll(".popup");
 
-function closePopup(evt) {
-  if (evt.target.classList.contains("popup")) {
-    evt.target.classList.add("popup_closed");
-  }
-}
+// import FormValidator from "./FormValidator";
 
-popups.forEach(popup => {
-  popup.addEventListener('click', closePopup);
+// //Función que llama la clase FormValidator
+// const Validator = new FormValidator({
+//     formSelector: ".popup",
+//     inputSelector: ".popup__text",
+//     submitButtonSelector: ".popup__button",
+//     inactiveButtonClass: "popup__button_inactive",
+//     inputErrorClass: "popup__text_error",
+//     errorClass: "popup__input-error"
+// });
 
-})
+// Validator.enableValidation();
 
-//Función para cerrar la ventana emergente pulsando Esc
-function closePopupEsc(evt) {
-  if (evt.key === "Escape") {
-    popups.forEach(popup => popup.classList.add("popup_closed"));
-  }
-}
+// //Función para cerrar la ventana emergente haciendo clic en la superposición
+// const popups = document.querySelectorAll(".popup");
 
-document.addEventListener("keydown", closePopupEsc);
+// function closePopup(evt) {
+//   if (evt.target.classList.contains("popup")) {
+//     evt.target.classList.add("popup_closed");
+//   }
+// }
 
+// popups.forEach(popup => {
+//   popup.addEventListener('click', closePopup);
 
+// })
 
+// //Función para cerrar la ventana emergente pulsando Esc
+// function closePopupEsc(evt) {
+//   if (evt.key === "Escape") {
+//     popups.forEach(popup => popup.classList.add("popup_closed"));
+//   }
+// }
+
+// document.addEventListener("keydown", closePopupEsc);
 
 
 

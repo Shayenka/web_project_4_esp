@@ -1,17 +1,14 @@
-
 export default class FormValidator {
   constructor (enableValidation) {
     this._enableValidation = enableValidation;
-    }
+  }
 
 
  _showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.add(this._enableValidation.inputErrorClass);
   errorElement.textContent = errorMessage;
-
   errorElement.classList.add(this._enableValidation.errorClass);
-
 };
 
 _hideInputError = (formElement, inputElement) => {
@@ -19,8 +16,7 @@ _hideInputError = (formElement, inputElement) => {
     inputElement.classList.remove(this._enableValidation.inputErrorClass);
     errorElement.classList.remove(this._enableValidation.errorClass);
     errorElement.textContent = "";
-  };
-
+};
 
 _checkInputValidity = (formElement, inputElement) => {
   if (!inputElement.validity.valid) {
@@ -57,14 +53,14 @@ _setEventListeners = (formElement) => {
 }
 
 enableValidation = () => {
-    const formList = Array.from(document.querySelectorAll(this._enableValidation.formSelector));
-      formList.forEach((formElement) => {
-        formElement.addEventListener("submit", function (evt) {
-          evt.preventDefault();
-        });
-
-        this._setEventListeners(formElement);
+  const formList = Array.from(document.querySelectorAll(this._enableValidation.formSelector));
+    formList.forEach((formElement) => {
+      formElement.addEventListener("submit", function (evt) {
+      evt.preventDefault();
     });
-  };
+
+    this._setEventListeners(formElement);
+  });
+};
 
 }

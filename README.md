@@ -18,4 +18,8 @@ Es una página interactiva en la que los usuarios pueden añadir, eliminar o dar
 
 ### \* Cerrar la ventana emergente haciendo clic en la superposición y pulsando Esc.
 
+### \* Programación Orientada a Objetos.
+
+### \* JavaScript modular.
+
 ### Enlace del proyecto en GitHub Pages: https://shayenka.github.io/web_project_4_esp/

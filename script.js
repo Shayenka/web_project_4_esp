@@ -24,7 +24,6 @@ const Validator = new FormValidator({
   inactiveButtonClass: "popup__button_inactive",
   inputErrorClass: "popup__text_error",
   errorClass: "popup__input-error"
-
 });
 
 Validator.enableValidation();
@@ -34,14 +33,12 @@ Validator.enableValidation();
 function setProfileValues() {
   profileName.textContent = inputName.value;
   profileOccupation.textContent = inputAbout.value;
-
 }
 
 //Función para borrar los campos de texto en la ventana de editar perfil
 function resetPopupProfile() {
   inputName.value="";
   inputAbout.value="";
-
 }
 
 //Función para actualizar datos, borrar campo de texto y cerrar ventana emergente
@@ -50,7 +47,6 @@ function handleProfileFormSubmit(evt) {
   setProfileValues();
   togglePopupProfile();
   resetPopupProfile();
-
 }
 
 buttonSubmitProfile.addEventListener ("click", handleProfileFormSubmit);
@@ -60,7 +56,6 @@ buttonSubmitProfile.addEventListener ("click", handleProfileFormSubmit);
 function resetPopupAddCard() {
   inputTitle.value="";
   inputLink.value="";
-
 }
 
 //Función para agregar card, borrar campos de texto y cerrar ventana emergente
@@ -70,7 +65,6 @@ buttonAddCard.addEventListener ("click", function(evt){
   elementsCard.prepend(cardCreated);
   resetPopupAddCard();
   togglePopupAddCard();
-
 });
 
 

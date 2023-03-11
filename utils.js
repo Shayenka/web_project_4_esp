@@ -6,7 +6,6 @@ import {formElementProfile, buttonEditProfile, buttonClosePopupProfile, formElem
 //Función para abrir/cerrar ventana para editar perfil
 export function togglePopupProfile() {
   formElementProfile.classList.toggle("popup_closed");
-
 }
   
 buttonEditProfile.addEventListener ("click", togglePopupProfile);
@@ -17,7 +16,6 @@ buttonClosePopupProfile.addEventListener ("click", togglePopupProfile);
 //Función para abrir/cerrar ventana para agregar card
 export function togglePopupAddCard() {
   formElementCard.classList.toggle("popup_closed-element"); 
-
 }
 
 ButtonAddCardPopup.addEventListener ("click", togglePopupAddCard);
@@ -25,8 +23,7 @@ buttonCloseCardPopup.addEventListener ("click", togglePopupAddCard);
 
 //Función para ampliar card
 function toggleImageShow() {
-  popupImageShow.classList.toggle("popup_closed");
-  
+  popupImageShow.classList.toggle("popup_closed");  
 }
   
 function handleCardImage(event){
@@ -54,8 +51,7 @@ function closePopup(evt) {
 }
   
 popups.forEach(popup => {
-  popup.addEventListener('click', closePopup);
-  
+  popup.addEventListener('click', closePopup); 
 });
   
 //Función para cerrar la ventana emergente pulsando Esc

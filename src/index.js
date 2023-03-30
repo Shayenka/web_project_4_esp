@@ -14,7 +14,7 @@ import {
   inputAbout,
   buttonAddCardPopup,
   buttonCloseCardPopup,
-} from "./constants.js";
+} from "./components/constants.js";
 
 //RENDERIZAR CARDS
 const cardsList = new Section(

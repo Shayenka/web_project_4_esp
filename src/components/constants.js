@@ -3,7 +3,7 @@ import louiseImage from "../images/LagoLouise.jpg";
 import calvasImage from "../images/MontañasCalvas.jpg";
 import latemarImage from "../images/Latemar.jpg";
 import vanoiseImage from "../images/Vanoise.jpg";
-import braiesImage from "../images/LagoBraies";
+import braiesImage from "../images/LagoBraies.jpg";
 
 //Array de objetos de las cards
 export const initialCards = [
@@ -33,12 +33,12 @@ export const initialCards = [
   },
 ];
 
-const yosemiteImage = new URL("../images/ValleYosemite.jpg", import.meta.url);
-const louiseImage = new URL("../images/LagoLouise.jpg", import.meta.url);
-const calvasImage = new URL("../images/MontañasCalvas.jpg", import.meta.url);
-const latemarImage = new URL("../images/Latemar.jpg", import.meta.url);
-const vanoiseImage = new URL("../images/Vanoise.jpg", import.meta.url);
-const braiesImage = new URL("../images/LagoBraies", import.meta.url);
+// const yosemiteImage = new URL("../images/ValleYosemite.jpg", import.meta.url);
+// const louiseImage = new URL("../images/LagoLouise.jpg", import.meta.url);
+// const calvasImage = new URL("../images/MontañasCalvas.jpg", import.meta.url);
+// const latemarImage = new URL("../images/Latemar.jpg", import.meta.url);
+// const vanoiseImage = new URL("../images/Vanoise.jpg", import.meta.url);
+// const braiesImage = new URL("../images/LagoBraies", import.meta.url);
 
 //Variable para generar card
 const templateCard = document.querySelector("#templateCard");

@@ -2,11 +2,11 @@
   "name": "web_project_4_esp",
   "version": "1.0.0",
   "description": "Es una página interactiva en la que los usuarios pueden añadir, eliminar o dar \"me gusta\" a las fotos.",
-  "main": "Card.js",
-  "scripts": { 
-  "build": "webpack --mode production", 
-  "dev": "webpack serve" 
-}, 
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack serve"
+  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -21,7 +21,8 @@
     "mini-css-extract-plugin": "^2.7.4",
     "postcss-loader": "^7.1.0",
     "webpack": "^5.76.2",
-    "webpack-cli": "^5.0.1"
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.13.1"
   },
   "dependencies": {
     "core-js": "^3.29.1"

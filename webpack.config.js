@@ -21,7 +21,6 @@ module.exports = {
     compress: true,
     port: 8080,
     open: true,
-    stats: "errors-only", // SE LO AGREGUE
   },
   module: {
     rules: [

@@ -1,25 +1,20 @@
-import templateCard from "./constants.js";
-import { imageShow, imageText } from "./constants.js";
-import { toggleImageShow } from "./utils.js";
+import { templateCard } from "./constants.js";
+import PopupWithImage from "./PopupWithImage.js";
 
 export default class Card {
-  constructor(data) {
+  constructor(data, cardSelector) {
     this._name = data.name;
     this._link = data.link;
+
+    this._cardSelector = cardSelector;
   }
 
   _getTemplate() {
     const templateElement = templateCard
       .cloneNode(true)
-      .content.querySelector(".element");
+      .content.querySelector(this._cardSelector);
 
     return templateElement;
-  }
-
-  _handleModalCards() {
-    toggleImageShow();
-    imageShow.src = this._link;
-    imageText.textContent = this._name;
   }
 
   _likeCard() {
@@ -33,7 +28,16 @@ export default class Card {
   _setEventsListeners() {
     this._likeButton.addEventListener("click", () => this._likeCard());
     this._buttonDelete.addEventListener("click", () => this._deleteCard());
-    this._cardImage.addEventListener("click", () => this._handleModalCards());
+    this._cardImage.addEventListener("click", () => {
+      const openImage = new PopupWithImage("#popupImage");
+      const showImage = {
+        image: this._cardImage.src,
+        text: this._cardTitle.textContent,
+      };
+
+      openImage.open(this._cardImage.src, this._cardTitle.textContent);
+      console.log(this._cardImage.src, this._cardTitle.textContent);
+    });
   }
 
   _setCardProperties() {

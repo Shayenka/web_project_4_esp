@@ -1,79 +1,93 @@
-import Card from "./Card.js";
-import FormValidator from "./FormValidator.js";
-import {
-  initialCards,
-  inputName,
-  inputAbout,
-  profileName,
-  profileOccupation,
-  buttonSubmitProfile,
-  inputTitle,
-  inputLink,
-  buttonAddCard,
-  elementsCard,
-} from "./constants.js";
-import { togglePopupProfile, togglePopupAddCard } from "./utils.js";
+// import Section from "./Section.js";
+// import Card from "./Card.js";
+// import PopupWithForm from "./PopupWithForm.js";
+// import UserInfo from "./UserInfo.js";
+// import { initialCards } from "./constants.js";
+// import FormValidator from "./FormValidator.js";
+// import {
+//   buttonEditProfile,
+//   buttonClosePopupProfile,
+//   profileName,
+//   profileOccupation,
+//   inputName,
+//   inputAbout,
+//   buttonAddCardPopup,
+//   buttonCloseCardPopup,
+// } from "./constants.js";
 
-//Función para renderizar cards
-function renderCards() {
-  initialCards.forEach((data) => {
-    const cardCreated = new Card(data).generateCard();
-    elementsCard.append(cardCreated);
-  });
-}
+// //RENDERIZAR CARDS
+// const cardsList = new Section(
+//   {
+//     items: initialCards,
+//     renderer: (item) => {
+//       const newCard = new Card(item, ".element");
+//       const cardElement = newCard.generateCard();
+//       cardsList.addItem(cardElement);
+//     },
+//   },
+//   ".elements"
+// );
+// cardsList.renderItems();
 
-renderCards();
+// //POPUP AÑADIR CARD
+// export function handleAddCardFormSubmit(data) {
+//   console.log(data.link, data.name);
+//   const card = new Card(data, ".element");
+//   console.log(card);
+//   const cardElement = card.generateCard();
 
-//Función para validar formulario
-const Validator = new FormValidator({
-  formSelector: ".popup",
-  inputSelector: ".popup__text",
-  submitButtonSelector: ".popup__button",
-  inactiveButtonClass: "popup__button_inactive",
-  inputErrorClass: "popup__text_error",
-  errorClass: "popup__input-error",
-});
+//   cardsList.addItemToStart(cardElement); //Section
+// }
 
-Validator.enableValidation();
+// const cardForm = new PopupWithForm("#addCard", handleAddCardFormSubmit);
 
-//POPUP PERFIL
-//Función para actualizar datos en la ventana del perfil
-function setProfileValues() {
-  profileName.textContent = inputName.value;
-  profileOccupation.textContent = inputAbout.value;
-}
+// cardForm.setEventListeners();
 
-//Función para borrar los campos de texto en la ventana de editar perfil
-function resetPopupProfile() {
-  inputName.value = "";
-  inputAbout.value = "";
-}
+// buttonAddCardPopup.addEventListener("click", () => {
+//   cardForm.open();
+// });
 
-//Función para actualizar datos, borrar campo de texto y cerrar ventana emergente
-function handleProfileFormSubmit(evt) {
-  evt.preventDefault();
-  setProfileValues();
-  togglePopupProfile();
-  resetPopupProfile();
-}
+// buttonCloseCardPopup.addEventListener("click", () => {
+//   cardForm.close();
+// });
 
-buttonSubmitProfile.addEventListener("click", handleProfileFormSubmit);
+// //POPUP EDITAR PERFIL
+// export function handleEditProfileFormSubmit() {
+//   const userData = {
+//     name: inputName.value,
+//     job: inputAbout.value,
+//   };
+//   userProfile.setUserInfo(userData);
+//   editProfile.close();
+// }
 
-//POPUP CARDS
-//Función para borrar los campos de texto en la ventana de agregar card
-function resetPopupAddCard() {
-  inputTitle.value = "";
-  inputLink.value = "";
-}
+// const editProfile = new PopupWithForm(
+//   "#editProfile",
+//   handleEditProfileFormSubmit
+// );
+// editProfile.setEventListeners();
 
-//Función para agregar card, borrar campos de texto y cerrar ventana emergente
-buttonAddCard.addEventListener("click", function (evt) {
-  evt.preventDefault();
-  const cardCreated = new Card({
-    name: inputTitle.value,
-    link: inputLink.value,
-  }).generateCard();
-  elementsCard.prepend(cardCreated);
-  resetPopupAddCard();
-  togglePopupAddCard();
-});
+// const userProfile = new UserInfo(profileName, profileOccupation);
+
+// buttonEditProfile.addEventListener("click", () => {
+//   const infoProfile = userProfile.getUserInfo();
+//   inputName.value = infoProfile.userName;
+//   inputAbout.value = infoProfile.userJob;
+//   editProfile.open();
+// });
+
+// buttonClosePopupProfile.addEventListener("click", () => {
+//   editProfile.close();
+// });
+
+// //VALIDAR FORMULARIO
+// const Validator = new FormValidator({
+//   formSelector: ".popup",
+//   inputSelector: ".popup__text",
+//   submitButtonSelector: ".popup__button",
+//   inactiveButtonClass: "popup__button_inactive",
+//   inputErrorClass: "popup__text_error",
+//   errorClass: "popup__input-error",
+// });
+
+// Validator.enableValidation();

@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="index.css" />
     <title>Alrededor de los Estados Unidos</title>
   </head>
   <body>
@@ -12,7 +11,7 @@
       <header class="header">
         <img
           class="header__logo"
-          src="./images/logo.svg"
+          src="<%=require('./images/logo.svg')%>"
           alt="logo Around The U.S"
         />
       </header>
@@ -21,7 +20,7 @@
           <div class="profile__avatar">
             <img
               class="profile__image"
-              src="./images/image.jpg"
+              src="<%=require(./images/image.jpg')%>"
               alt="Foto de Perfil"
             />
           </div>
@@ -33,25 +32,25 @@
             <button class="profile__edit">
               <img
                 class="profile__icon"
-                src="./images/Edit.svg"
+                src="<%=require(./images/Edit.svg')%>"
                 alt="icono de lápiz para editar perfil."
               />
             </button>
           </div>
-          <button class="add-button">
+          <button class="add-button" id="addButton">
             <img
               class="add-button__icon"
-              src="./images/Signo+.svg"
-              alt="Icono del signo + para añadir elementos."
+              src="<%=require(./images/Signo+.svg')%>"
+              alt="Icono del signo + para añadir card."
             />
           </button>
         </section>
 
-        <form class="popup popup_closed" novalidate>
+        <form class="popup popup_closed" id="editProfile" novalidate>
           <fieldset class="popup__container">
             <img
               class="popup__close-icon"
-              src="./images/CloseIcon.svg"
+              src="<%=require(./images/CloseIcon.svg')%>"
               alt="Icono de una X para cerrar ventana emergente."
             />
             <label class="popup__title">Edit profile</label>
@@ -90,7 +89,7 @@
             <div class="element">
               <img
                 class="element__delete"
-                src="./images/Papelera.svg"
+                src="<%=require('./images/Papelera.svg')%>"
                 alt="Icono de papelera para eliminar"
               />
               <img
@@ -103,7 +102,7 @@
                 <h3 class="element__title"></h3>
                 <img
                   class="icon-like"
-                  src="./images/like.svg"
+                  src="<%=require('./images/like.svg')%>"
                   alt="Icono de corazón"
                 />
               </div>
@@ -115,7 +114,7 @@
           <div class="image-show">
             <img
               class="image-show__close-icon"
-              src="./images/CloseIcon.svg"
+              src="<%=require('./images/CloseIcon.svg')%>"
               alt="Icono de una X para cerrar imagen."
             />
             <img class="image-show__popup" src=" " alt="" />
@@ -123,17 +122,18 @@
           </div>
         </section>
 
-        <form class="popup popup_closed-element" novalidate>
+        <form class="popup popup_closed" id="addCard" novalidate>
           <fieldset class="popup__container">
             <img
               class="popup__close-icon popup__close-icon_element"
-              src="./images/CloseIcon.svg"
+              src="<%=require('./images/CloseIcon.svg')%>"
               alt="Icono de una X para cerrar ventana emergente."
             />
             <label class="popup__title">Nuevo lugar</label>
             <input
               type="text"
               id="titulo"
+              name="name"
               placeholder="Titulo"
               class="popup__text"
               required
@@ -144,6 +144,7 @@
             <input
               type="url"
               id="enlace"
+              name="link"
               placeholder="URL de la imagen"
               class="popup__text"
               required
@@ -164,6 +165,6 @@
         </footer>
       </main>
     </div>
-    <script type="module" src="script.js"></script>
+    <script type="module" src="index.js"></script>
   </body>
 </html>

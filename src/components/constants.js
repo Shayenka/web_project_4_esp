@@ -1,30 +1,44 @@
+import yosemiteImage from "../images/ValleYosemite.jpg";
+import louiseImage from "../images/LagoLouise.jpg";
+import calvasImage from "../images/MontañasCalvas.jpg";
+import latemarImage from "../images/Latemar.jpg";
+import vanoiseImage from "../images/Vanoise.jpg";
+import braiesImage from "../images/LagoBraies";
+
 //Array de objetos de las cards
 export const initialCards = [
   {
     name: "Valle de Yosemite",
-    link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
+    link: yosemiteImage,
   },
   {
     name: "Lago Louise",
-    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
+    link: louiseImage,
   },
   {
     name: "Montañas Calvas",
-    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
+    link: calvasImage,
   },
   {
     name: "Latemar",
-    link: "https://code.s3.yandex.net/web-code/latemar.jpg",
+    link: latemarImage,
   },
   {
     name: "Parque Nacional de la Vanoise",
-    link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
+    link: vanoiseImage,
   },
   {
     name: "Lago di Braies",
-    link: "https://code.s3.yandex.net/web-code/lago.jpg",
+    link: braiesImage,
   },
 ];
+
+const yosemiteImage = new URL("../images/ValleYosemite.jpg", import.meta.url);
+const louiseImage = new URL("../images/LagoLouise.jpg", import.meta.url);
+const calvasImage = new URL("../images/MontañasCalvas.jpg", import.meta.url);
+const latemarImage = new URL("../images/Latemar.jpg", import.meta.url);
+const vanoiseImage = new URL("../images/Vanoise.jpg", import.meta.url);
+const braiesImage = new URL("../images/LagoBraies", import.meta.url);
 
 //Variable para generar card
 const templateCard = document.querySelector("#templateCard");
@@ -43,7 +57,7 @@ const buttonSubmitProfile = document.querySelector(".popup__button");
 
 //Variables para abrir/cerrar ventana para agregar card
 const formElementCard = document.querySelector(".popup_closed-element");
-const ButtonAddCardPopup = document.querySelector(".add-button");
+const buttonAddCardPopup = document.querySelector("#addButton");
 const buttonCloseCardPopup = document.querySelector(
   ".popup__close-icon_element"
 );
@@ -64,8 +78,8 @@ const imageText = document.querySelector(".image-show__title");
 //Variable para cerrar la ventana emergente haciendo clic en superposición/pulsando Esc
 const popups = document.querySelectorAll(".popup");
 
-export default templateCard;
 export {
+  templateCard,
   formElementProfile,
   buttonEditProfile,
   buttonClosePopupProfile,
@@ -76,7 +90,7 @@ export {
   profileOccupation,
   buttonSubmitProfile,
   formElementCard,
-  ButtonAddCardPopup,
+  buttonAddCardPopup,
   buttonCloseCardPopup,
   buttonAddCard,
   inputTitle,

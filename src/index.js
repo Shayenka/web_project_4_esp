@@ -1,4 +1,4 @@
-import "./blocks";
+import "./index.css";
 import Section from "./components/Section.js";
 import Card from "./components/Card.js";
 import PopupWithForm from "./components/PopupWithForm.js";

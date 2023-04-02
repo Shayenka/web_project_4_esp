@@ -33,13 +33,6 @@ export const initialCards = [
   },
 ];
 
-// const yosemiteImage = new URL("../images/ValleYosemite.jpg", import.meta.url);
-// const louiseImage = new URL("../images/LagoLouise.jpg", import.meta.url);
-// const calvasImage = new URL("../images/MontañasCalvas.jpg", import.meta.url);
-// const latemarImage = new URL("../images/Latemar.jpg", import.meta.url);
-// const vanoiseImage = new URL("../images/Vanoise.jpg", import.meta.url);
-// const braiesImage = new URL("../images/LagoBraies", import.meta.url);
-
 //Variable para generar card
 const templateCard = document.querySelector("#templateCard");
 

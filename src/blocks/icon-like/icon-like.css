@@ -4,7 +4,7 @@
 }
 
 .icon-like:hover {
-  background-image: url(../images/BlackLike.svg);
+  background-image: url(@/images/BlackLike.svg);
   width: 21px;
   height: 19px;
 }

@@ -53,4 +53,9 @@ module.exports = {
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),
   ],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "src"), // Add this line to create an alias for the 'src' folder
+    },
+  },
 };

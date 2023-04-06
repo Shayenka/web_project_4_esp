@@ -39,11 +39,10 @@ cardsList.renderItems();
 
 //POPUP AÑADIR CARD
 export function handleAddCardFormSubmit(data) {
-  console.log(data.link, data.name);
   const card = new Card(data, ".element", handleCardClick);
   const cardElement = card.generateCard();
 
-  cardsList.addItemToStart(cardElement); //Section
+  cardsList.addItemToStart(cardElement);
 }
 
 const cardForm = new PopupWithForm("#addCard", handleAddCardFormSubmit);
@@ -87,9 +86,9 @@ buttonClosePopupProfile.addEventListener("click", () => {
   editProfile.close();
 });
 
-//VALIDAR FORMULARIO
-const Validator = new FormValidator({
-  formSelector: ".popup",
+//VALIDAR FORMULARIO EDITAR PERFIL
+const ValidatorFormProfile = new FormValidator({
+  formSelector: "#editProfile",
   inputSelector: ".popup__text",
   submitButtonSelector: ".popup__button",
   inactiveButtonClass: "popup__button_inactive",
@@ -97,4 +96,16 @@ const Validator = new FormValidator({
   errorClass: "popup__input-error",
 });
 
-Validator.enableValidation();
+ValidatorFormProfile.enableValidation();
+
+//VALIDAR FORMULARIO AÑADIR CARD
+const ValidatorFormAddCard = new FormValidator({
+  formSelector: "#addCard",
+  inputSelector: ".popup__text",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_inactive",
+  inputErrorClass: "popup__text_error",
+  errorClass: "popup__input-error",
+});
+
+ValidatorFormAddCard.enableValidation();

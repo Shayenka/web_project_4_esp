@@ -5,6 +5,7 @@ import PopupWithForm from "./components/PopupWithForm.js";
 import UserInfo from "./components/UserInfo.js";
 import { initialCards } from "./components/constants.js";
 import FormValidator from "./components/FormValidator.js";
+import PopupWithImage from "./components/PopupWithImage.js";
 import {
   buttonEditProfile,
   buttonClosePopupProfile,
@@ -16,12 +17,18 @@ import {
   buttonCloseCardPopup,
 } from "./components/constants.js";
 
+//POPUP MOSTRAR IMAGEN
+function handleCardClick(src, text) {
+  const openImage = new PopupWithImage("#popupImage");
+  openImage.open(src, text);
+}
+
 //RENDERIZAR CARDS
 const cardsList = new Section(
   {
     items: initialCards,
     renderer: (item) => {
-      const newCard = new Card(item, ".element");
+      const newCard = new Card(item, ".element", handleCardClick);
       const cardElement = newCard.generateCard();
       cardsList.addItem(cardElement);
     },
@@ -33,8 +40,7 @@ cardsList.renderItems();
 //POPUP AÑADIR CARD
 export function handleAddCardFormSubmit(data) {
   console.log(data.link, data.name);
-  const card = new Card(data, ".element");
-  console.log(card);
+  const card = new Card(data, ".element", handleCardClick);
   const cardElement = card.generateCard();
 
   cardsList.addItemToStart(cardElement); //Section

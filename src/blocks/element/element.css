@@ -1,5 +1,5 @@
 .element {
-  border-radius: 10px 10px 0px 0px;
+  border-radius: 10px 10px 10px 10px;
   display: grid;
   max-width: 282px;
   background: #FFFFFF;

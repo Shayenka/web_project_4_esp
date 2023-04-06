@@ -22,4 +22,6 @@ Es una página interactiva en la que los usuarios pueden añadir, eliminar o dar
 
 ### \* JavaScript modular.
 
+### \* Configuración de empaquetamiento (bundling) y creación del proyecto con Webpack.
+
 ### Enlace del proyecto en GitHub Pages: https://shayenka.github.io/web_project_4_esp/

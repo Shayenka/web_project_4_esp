@@ -48,6 +48,11 @@ const profileName = document.querySelector(".profile__name");
 const profileOccupation = document.querySelector(".profile__occupation");
 const buttonSubmitProfile = document.querySelector(".popup__button");
 
+//Variables popup avatar
+const popupAvatar = document.querySelector("#changeAvatar");
+const closePopupAvatar = document.querySelector("#closePopupAvatar");
+const profileAvatar = document.querySelector(".profile__image");
+
 //Variables para abrir/cerrar ventana para agregar card
 const formElementCard = document.querySelector(".popup_closed-element");
 const buttonAddCardPopup = document.querySelector("#addButton");
@@ -94,4 +99,7 @@ export {
   imageShow,
   imageText,
   imageCards,
+  profileAvatar,
+  closePopupAvatar,
+  popupAvatar,
 };

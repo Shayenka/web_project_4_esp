@@ -15,6 +15,9 @@ import {
   inputAbout,
   buttonAddCardPopup,
   buttonCloseCardPopup,
+  popupAvatar,
+  profileAvatar,
+  closePopupAvatar,
 } from "./components/constants.js";
 
 //POPUP MOSTRAR IMAGEN
@@ -109,3 +112,25 @@ const ValidatorFormAddCard = new FormValidator({
 });
 
 ValidatorFormAddCard.enableValidation();
+
+//VALIDAR FORMULARIO CAMBIAR AVATAR
+const ValidatorFormChangeAvatar = new FormValidator({
+  formSelector: "#changeAvatar",
+  inputSelector: ".popup__text",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_inactive",
+  inputErrorClass: "popup__text_error",
+  errorClass: "popup__input-error",
+});
+
+ValidatorFormChangeAvatar.enableValidation();
+
+//POPUP AVATAR
+profileAvatar.addEventListener("click", (evt) => {
+  console.log(evt.target);
+  popupAvatar.classList.remove("popup_closed");
+});
+
+closePopupAvatar.addEventListener("click", () => {
+  popupAvatar.classList.add("popup_closed");
+});

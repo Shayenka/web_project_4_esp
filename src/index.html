@@ -84,6 +84,35 @@
           </fieldset>
         </form>
 
+        <form class="popup popup_closed" id="changeAvatar" novalidate>
+          <fieldset class="popup__container">
+            <img
+              class="popup__close-icon"
+              id="closePopupAvatar"
+              src="<%=require('./images/CloseIcon.svg')%>"
+              alt="Icono de una X para cerrar ventana emergente."
+            />
+            <label class="popup__title">Cambiar foto de perfil</label>
+            <input
+              type="url"
+              id="enlace"
+              name="link"
+              placeholder="URL de la foto de perfil"
+              class="popup__text"
+              required
+            />
+            <span class="popup__input-error" id="enlace-error"></span>
+            <button
+              type="submit"
+              id="buttonElement"
+              class="popup__button popup__button_inactive"
+              disabled
+            >
+              Guarda
+            </button>
+          </fieldset>
+        </form>
+
         <section class="elements">
           <template id="templateCard">
             <div class="element">
@@ -114,6 +143,21 @@
             />
             <img class="image-show__popup" src=" " alt="" />
             <h3 class="image-show__title"></h3>
+          </div>
+        </section>
+
+        <section class="popup popup_closed" id="popupDeleteCard">
+          <div class="popup__container">
+            <img
+              class="popup__close-icon"
+              id="ClosePopupDeleteCard"
+              src="<%=require('./images/CloseIcon.svg')%>"
+              alt="Icono de una X para cerrar ventana emergente."
+            />
+            <h3 class="popup__title">¿Estás seguro/a?</h3>
+            <button type="submit" id="buttonDeleteCard" class="popup__button">
+              Sí
+            </button>
           </div>
         </section>
 

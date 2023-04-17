@@ -51,7 +51,7 @@ const buttonSubmitProfile = document.querySelector(".popup__button");
 //Variables popup avatar
 const popupAvatar = document.querySelector("#changeAvatar");
 const closePopupAvatar = document.querySelector("#closePopupAvatar");
-const profileAvatar = document.querySelector(".profile__image");
+const profileAvatar = document.querySelector(".profile__avatar");
 
 //Variables para abrir/cerrar ventana para agregar card
 const formElementCard = document.querySelector(".popup_closed-element");

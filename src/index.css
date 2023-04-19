@@ -28,6 +28,8 @@
 /*icon-like*/
 @import url(blocks/icon-like/icon-like.css);
 @import url(blocks/icon-like/_black/icon-like_black.css);
+@import url(blocks/likes-card/likes-card.css);
+@import url(blocks/likes-card/__count/likes-card__count.css);
 /*footer*/
 @import url(blocks/footer/footer.css);
 @import url(blocks/footer/__copyright/footer__copyright.css);

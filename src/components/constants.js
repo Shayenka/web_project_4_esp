@@ -52,6 +52,7 @@ const buttonSubmitProfile = document.querySelector(".popup__button");
 const popupAvatar = document.querySelector("#changeAvatar");
 const closePopupAvatar = document.querySelector("#closePopupAvatar");
 const profileAvatar = document.querySelector(".profile__avatar");
+const inputLinkAvatar = document.querySelector("#linkAvatar");
 
 //Variables para abrir/cerrar ventana para agregar card
 const formElementCard = document.querySelector(".popup_closed-element");
@@ -72,6 +73,11 @@ const buttonCloseImageShow = document.querySelector(".image-show__close-icon");
 const popupImageShow = document.querySelector("#popupImage");
 const imageShow = document.querySelector(".image-show__popup");
 const imageText = document.querySelector(".image-show__title");
+
+//Variables para popup eliminar card
+const popupDeleteCard = document.querySelector("#popupDeleteCard");
+const buttonClosePopupDelete = document.querySelector("#ClosePopupDeleteCard");
+const buttonDeleteCard = document.querySelector("#buttonDeleteCard");
 
 //Variable para cerrar la ventana emergente haciendo clic en superposición/pulsando Esc
 const popups = document.querySelectorAll(".popup");
@@ -102,4 +108,8 @@ export {
   profileAvatar,
   closePopupAvatar,
   popupAvatar,
+  popupDeleteCard,
+  buttonClosePopupDelete,
+  buttonDeleteCard,
+  inputLinkAvatar,
 };

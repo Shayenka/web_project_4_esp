@@ -95,7 +95,7 @@
             <label class="popup__title">Cambiar foto de perfil</label>
             <input
               type="url"
-              id="enlace"
+              id="linkAvatar"
               name="link"
               placeholder="URL de la foto de perfil"
               class="popup__text"
@@ -124,11 +124,14 @@
               <img class="element__image" id="src" src=" " alt=" " />
               <div class="element__footer-photo">
                 <h3 class="element__title"></h3>
-                <img
-                  class="icon-like"
-                  src="<%=require('./images/like.svg')%>"
-                  alt="Icono de corazón"
-                />
+                <div class="likes-card">
+                  <img
+                    class="icon-like"
+                    src="<%=require('./images/like.svg')%>"
+                    alt="Icono de corazón"
+                  />
+                  <span class="likes-card__count">1</span>
+                </div>
               </div>
             </div>
           </template>

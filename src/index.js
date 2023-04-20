@@ -24,9 +24,9 @@ import {
   buttonDeleteCard,
   inputTitle,
   inputLink,
-  buttonSubmitProfile,
-  buttonAddCard,
   inputLinkAvatar,
+  profileAvatarImage,
+  submitButtonSelector,
 } from "./components/constants.js";
 
 //Cargar la información del usuario desde el servidor
@@ -57,15 +57,27 @@ function handleCardClick(src, text) {
 }
 
 //FUNCIÓN ELIMINAR CARD
-function handleDeleteCard() {
+function handleDeleteCard(cardId, cardElement) {
   popupDeleteCard.classList.remove("popup_closed");
+
+  buttonDeleteCard.addEventListener("click", () => {
+    cardElement.remove();
+
+    const api = new Api();
+    api
+      .deleteCard(cardId)
+      .then((result) => {
+        console.log(`Tarjeta con id ${cardId} eliminada`);
+      })
+      .catch((error) => {
+        console.log(`Error al eliminar tarjeta con id ${cardId}: ${error}`);
+      });
+
+    popupDeleteCard.classList.add("popup_closed");
+  });
 }
 
 buttonClosePopupDelete.addEventListener("click", () => {
-  popupDeleteCard.classList.add("popup_closed");
-});
-
-buttonDeleteCard.addEventListener("click", () => {
   popupDeleteCard.classList.add("popup_closed");
 });
 
@@ -131,9 +143,11 @@ buttonCloseCardPopup.addEventListener("click", () => {
 export function handleEditProfileFormSubmit() {
   const userData = {
     name: inputName.value,
-    job: inputAbout.value,
+    about: inputAbout.value,
   };
+
   const api = new Api();
+  submitButtonSelector.textContent = "Cargando...";
   api
     .editUserInfo(userData)
     .then((userInfo) => {
@@ -142,6 +156,10 @@ export function handleEditProfileFormSubmit() {
     })
     .catch((err) => {
       console.log(err);
+    })
+
+    .finally(() => {
+      submitButtonSelector.textContent = "Guardar";
     });
 }
 
@@ -163,6 +181,39 @@ buttonEditProfile.addEventListener("click", () => {
 buttonClosePopupProfile.addEventListener("click", () => {
   editProfile.close();
 });
+
+//POPUP AVATAR
+profileAvatar.addEventListener("click", () => {
+  popupAvatar.classList.remove("popup_closed");
+});
+
+closePopupAvatar.addEventListener("click", () => {
+  popupAvatar.classList.add("popup_closed");
+});
+
+export function handleChangeAvatarProfile() {
+  const userAvatar = {
+    avatar: inputLinkAvatar.value,
+  };
+  const api = new Api();
+  api
+    .changeAvatarProfile(userAvatar)
+    .then((userInfo) => {
+      profileAvatarImage.src = userInfo.link;
+    })
+    .then(() => {
+      submitButtonSelector.textcontent = "Cargando...";
+    })
+    .then(() => {
+      newAvatar.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+const newAvatar = new PopupWithForm("#changeAvatar", handleChangeAvatarProfile);
+newAvatar.setEventListeners();
 
 //VALIDAR FORMULARIO EDITAR PERFIL
 const ValidatorFormProfile = new FormValidator({
@@ -199,50 +250,3 @@ const ValidatorFormChangeAvatar = new FormValidator({
 });
 
 ValidatorFormChangeAvatar.enableValidation();
-
-//POPUP AVATAR
-profileAvatar.addEventListener("click", () => {
-  popupAvatar.classList.remove("popup_closed");
-});
-
-closePopupAvatar.addEventListener("click", () => {
-  popupAvatar.classList.add("popup_closed");
-});
-
-export function handleChangeAvatarProfile() {
-  const avatar = {
-    link: inputLinkAvatar.value,
-  };
-}
-
-const newAvatar = new PopupWithForm("#changeAvatar", handleChangeAvatarProfile);
-newAvatar.setEventListeners();
-
-// //POPUP EDITAR PERFIL
-// export function handleEditProfileFormSubmit() {
-//   const userData = {
-//     name: inputName.value,
-//     job: inputAbout.value,
-//   };
-//   userProfile.setUserInfo(userData);
-//   editProfile.close();
-// }
-
-// const editProfile = new PopupWithForm(
-//   "#editProfile",
-//   handleEditProfileFormSubmit
-// );
-// editProfile.setEventListeners();
-
-// const userProfile = new UserInfo(profileName, profileOccupation);
-
-// buttonEditProfile.addEventListener("click", () => {
-//   const infoProfile = userProfile.getUserInfo();
-//   inputName.value = infoProfile.userName;
-//   inputAbout.value = infoProfile.userJob;
-//   editProfile.open();
-// });
-
-// buttonClosePopupProfile.addEventListener("click", () => {
-//   editProfile.close();
-// });

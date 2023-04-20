@@ -53,6 +53,7 @@ const popupAvatar = document.querySelector("#changeAvatar");
 const closePopupAvatar = document.querySelector("#closePopupAvatar");
 const profileAvatar = document.querySelector(".profile__avatar");
 const inputLinkAvatar = document.querySelector("#linkAvatar");
+const profileAvatarImage = document.querySelector(".profile__image");
 
 //Variables para abrir/cerrar ventana para agregar card
 const formElementCard = document.querySelector(".popup_closed-element");
@@ -81,6 +82,9 @@ const buttonDeleteCard = document.querySelector("#buttonDeleteCard");
 
 //Variable para cerrar la ventana emergente haciendo clic en superposición/pulsando Esc
 const popups = document.querySelectorAll(".popup");
+
+//Variable para enviar formulario
+const submitButtonSelector = document.querySelectorAll(".popup__button");
 
 export {
   templateCard,
@@ -112,4 +116,6 @@ export {
   buttonClosePopupDelete,
   buttonDeleteCard,
   inputLinkAvatar,
+  profileAvatarImage,
+  submitButtonSelector,
 };

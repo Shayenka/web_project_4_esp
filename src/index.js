@@ -3,7 +3,6 @@ import Section from "./components/Section.js";
 import Card from "./components/Card.js";
 import PopupWithForm from "./components/PopupWithForm.js";
 import UserInfo from "./components/UserInfo.js";
-import { initialCards } from "./components/constants.js";
 import FormValidator from "./components/FormValidator.js";
 import PopupWithImage from "./components/PopupWithImage.js";
 import Api from "./components/Api.js";
@@ -30,21 +29,38 @@ import {
 } from "./components/constants.js";
 
 //Cargar la información del usuario desde el servidor
+const userProfile = new UserInfo(profileName, profileOccupation);
 const api = new Api();
-const userInfo = api
+api
   .getUserInfo()
   .then((userInfo) => {
-    console.log(userInfo);
+    userProfile.setUserInfo(userInfo);
   })
   .catch((err) => {
     console.log(err);
   });
 
 //Cargar las tarjetas desde el servidor
-const cards = api
+api
   .getCards()
-  .then((userInfo) => {
-    console.log(userInfo);
+  .then((infoCard) => {
+    const cardsList = new Section(
+      {
+        items: infoCard,
+        renderer: (item) => {
+          const newCard = new Card(
+            item,
+            ".element",
+            handleCardClick,
+            handleDeleteCard
+          );
+          const cardElement = newCard.generateCard();
+          cardsList.addItem(cardElement);
+        },
+      },
+      ".elements"
+    );
+    cardsList.renderItems();
   })
   .catch((err) => {
     console.log(err);
@@ -81,25 +97,6 @@ buttonClosePopupDelete.addEventListener("click", () => {
   popupDeleteCard.classList.add("popup_closed");
 });
 
-//RENDERIZAR CARDS
-const cardsList = new Section(
-  {
-    items: initialCards, //Cambiar por el cards del api
-    renderer: (item) => {
-      const newCard = new Card(
-        item,
-        ".element",
-        handleCardClick,
-        handleDeleteCard
-      );
-      const cardElement = newCard.generateCard();
-      cardsList.addItem(cardElement);
-    },
-  },
-  ".elements"
-);
-cardsList.renderItems();
-
 //POPUP AÑADIR CARD
 export function handleAddCardFormSubmit() {
   const cardName = inputTitle.value;
@@ -120,10 +117,24 @@ export function handleAddCardFormSubmit() {
       );
       const cardElement = card.generateCard();
 
+      const cardsList = new Section(
+        {
+          items: [],
+          renderer: (item) => {
+            cardsList.addItem(item);
+          },
+        },
+        ".elements"
+      );
+
       cardsList.addItemToStart(cardElement);
     })
     .catch((err) => {
       console.log(err);
+    })
+    .finally(() => {
+      submitButtonSelector.textContent = "Guardar";
+      cardForm.close();
     });
 }
 
@@ -147,12 +158,10 @@ export function handleEditProfileFormSubmit() {
   };
 
   const api = new Api();
-  submitButtonSelector.textContent = "Cargando...";
   api
     .editUserInfo(userData)
     .then((userInfo) => {
       userProfile.setUserInfo(userInfo);
-      editProfile.close();
     })
     .catch((err) => {
       console.log(err);
@@ -160,6 +169,7 @@ export function handleEditProfileFormSubmit() {
 
     .finally(() => {
       submitButtonSelector.textContent = "Guardar";
+      editProfile.close();
     });
 }
 
@@ -169,7 +179,7 @@ const editProfile = new PopupWithForm(
 );
 editProfile.setEventListeners();
 
-const userProfile = new UserInfo(profileName, profileOccupation);
+// const userProfile = new UserInfo(profileName, profileOccupation);
 
 buttonEditProfile.addEventListener("click", () => {
   const infoProfile = userProfile.getUserInfo();
@@ -199,16 +209,18 @@ export function handleChangeAvatarProfile() {
   api
     .changeAvatarProfile(userAvatar)
     .then((userInfo) => {
-      profileAvatarImage.src = userInfo.link;
-    })
-    .then(() => {
-      submitButtonSelector.textcontent = "Cargando...";
+      userProfile.setUserInfo(userInfo);
+      profileAvatarImage.src = userInfo.avatar;
+      userProfile.setUserInfo(userInfo);
     })
     .then(() => {
       newAvatar.close();
     })
     .catch((err) => {
       console.log(err);
+    })
+    .finally(() => {
+      submitButtonSelector.textContent = "Guardar";
     });
 }
 

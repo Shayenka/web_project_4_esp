@@ -86,6 +86,9 @@ const popups = document.querySelectorAll(".popup");
 //Variable para enviar formulario
 const submitButtonSelector = document.querySelectorAll(".popup__button");
 
+//Variable identificador usuario perfil
+const userProfileId = "93de6497062267393a34f6f4";
+
 export {
   templateCard,
   formElementProfile,
@@ -118,4 +121,5 @@ export {
   inputLinkAvatar,
   profileAvatarImage,
   submitButtonSelector,
+  userProfileId,
 };

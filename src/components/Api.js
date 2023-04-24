@@ -59,7 +59,7 @@ export default class Api {
 
   addLike(cardId) {
     return this._useFetch(
-      "https://around.nomoreparties.co/v1/web_es_05/cards/likes/${cardId}",
+      `https://around.nomoreparties.co/v1/web_es_05/cards/likes/${cardId}`,
       `PUT`
     ).then((result) => {
       return result;
@@ -68,7 +68,7 @@ export default class Api {
 
   removeLike(cardId) {
     return this._useFetch(
-      "https://around.nomoreparties.co/v1/web_es_05/cards/likes/${cardId}",
+      `https://around.nomoreparties.co/v1/web_es_05/cards/likes/${cardId}`,
       `DELETE`
     ).then((result) => {
       return result;
@@ -77,7 +77,7 @@ export default class Api {
 
   deleteCard(cardId) {
     return this._useFetch(
-      "https://around.nomoreparties.co/v1/web_es_05/cards/${cardId}",
+      `https://around.nomoreparties.co/v1/web_es_05/cards/${cardId}`,
       `DELETE`
     ).then((result) => {
       return result;
@@ -86,7 +86,7 @@ export default class Api {
 
   changeAvatarProfile(userAvatar) {
     return this._useFetch(
-      "https://around.nomoreparties.co/v1/web_es_05/users/me/avatar ",
+      "https://around.nomoreparties.co/v1/web_es_05/users/me/avatar",
       `PATCH`,
       userAvatar
     ).then((result) => {

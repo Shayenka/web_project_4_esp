@@ -63,7 +63,7 @@ const buttonCloseCardPopup = document.querySelector(
 );
 
 //Variables para agregar card
-const buttonAddCard = document.querySelector("#buttonElement");
+const buttonAddCard = document.querySelector("#cardButton");
 const inputTitle = document.querySelector("#titulo");
 const inputLink = document.querySelector("#enlace");
 const elementsCard = document.querySelector(".elements");

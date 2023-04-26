@@ -1,11 +1,11 @@
 import "./index.css";
-import Section from "./components/Section.js";
-import Card from "./components/Card.js";
-import PopupWithForm from "./components/PopupWithForm.js";
-import UserInfo from "./components/UserInfo.js";
-import FormValidator from "./components/FormValidator.js";
-import PopupWithImage from "./components/PopupWithImage.js";
-import Api from "./components/Api.js";
+import Section from "../components/Section.js";
+import Card from "../components/Card.js";
+import PopupWithForm from "../components/PopupWithForms.js";
+import UserInfo from "../components/UserInfo.js";
+import FormValidator from "../components/FormValidator.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import Api from "../components/Api.js";
 import {
   buttonEditProfile,
   buttonClosePopupProfile,
@@ -26,7 +26,7 @@ import {
   inputLinkAvatar,
   profileAvatarImage,
   submitButtonSelector,
-} from "./components/constants.js";
+} from "../components/constants.js";
 
 //Cargar la información del usuario desde el servidor
 const userProfile = new UserInfo(profileName, profileOccupation);

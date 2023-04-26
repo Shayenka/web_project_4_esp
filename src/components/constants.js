@@ -1,38 +1,3 @@
-import yosemiteImage from "../images/ValleYosemite.jpg";
-import louiseImage from "../images/LagoLouise.jpg";
-import calvasImage from "../images/MontañasCalvas.jpg";
-import latemarImage from "../images/Latemar.jpg";
-import vanoiseImage from "../images/Vanoise.jpg";
-import braiesImage from "../images/LagoBraies.jpg";
-
-//Array de objetos de las cards
-export const initialCards = [
-  {
-    name: "Valle de Yosemite",
-    link: yosemiteImage,
-  },
-  {
-    name: "Lago Louise",
-    link: louiseImage,
-  },
-  {
-    name: "Montañas Calvas",
-    link: calvasImage,
-  },
-  {
-    name: "Latemar",
-    link: latemarImage,
-  },
-  {
-    name: "Parque Nacional de la Vanoise",
-    link: vanoiseImage,
-  },
-  {
-    name: "Lago di Braies",
-    link: braiesImage,
-  },
-];
-
 //Variable para generar card
 const templateCard = document.querySelector("#templateCard");
 

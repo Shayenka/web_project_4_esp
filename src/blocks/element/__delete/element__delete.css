@@ -6,3 +6,7 @@
   position: absolute;
   z-index: 2;
 }
+
+.element__delete:hover {
+  opacity: 0.6;
+}

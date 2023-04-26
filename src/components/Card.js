@@ -28,7 +28,7 @@ export default class Card {
     if (!this._likeButton.classList.contains("icon-like_black")) {
       this._api
         .addLike(cardId)
-        .then((result) => {
+        .then(() => {
           this._likeButton.classList.add("icon-like_black");
           this._cardLikesCount.textContent = this._likes;
         })
@@ -36,7 +36,7 @@ export default class Card {
     } else {
       this._api
         .removeLike(cardId)
-        .then((result) => {
+        .then(() => {
           this._likeButton.classList.remove("icon-like_black");
           this._cardLikesCount.textContent = this._likes;
         })

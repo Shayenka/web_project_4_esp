@@ -116,7 +116,6 @@ export function handleAddCardFormSubmit() {
         handleDeleteCard
       );
       const cardElement = card.generateCard();
-
       const cardsList = new Section(
         {
           items: [],

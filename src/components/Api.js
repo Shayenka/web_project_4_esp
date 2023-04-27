@@ -62,7 +62,7 @@ export default class Api {
       `https://around.nomoreparties.co/v1/web_es_05/cards/likes/${cardId}`,
       `PUT`
     ).then((result) => {
-      return result;
+      return result.likes.length;
     });
   }
 
@@ -71,7 +71,7 @@ export default class Api {
       `https://around.nomoreparties.co/v1/web_es_05/cards/likes/${cardId}`,
       `DELETE`
     ).then((result) => {
-      return result;
+      return result.likes.length;
     });
   }
 

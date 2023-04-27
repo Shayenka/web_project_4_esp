@@ -14,6 +14,9 @@ export default class Card {
 
     this._cardSelector = cardSelector;
     this._api = new Api();
+    this._liked = data.likes.some((item) => {
+      return item._id === this._userId;
+    });
   }
 
   _getTemplate() {
@@ -25,23 +28,31 @@ export default class Card {
   }
 
   _likeCard(cardId) {
-    if (!this._likeButton.classList.contains("icon-like_black")) {
-      this._api
-        .addLike(cardId)
-        .then(() => {
-          this._likeButton.classList.add("icon-like_black");
-          this._cardLikesCount.textContent = this._likes;
-        })
-        .catch((err) => console.log(`Error al añadir like: ${err}`));
-    } else {
-      this._api
-        .removeLike(cardId)
-        .then(() => {
-          this._likeButton.classList.remove("icon-like_black");
-          this._cardLikesCount.textContent = this._likes;
-        })
-        .catch((err) => console.log(`Error al remover like: ${err}`));
-    }
+    this._liked
+      ? this._api
+          .removeLike(cardId)
+          .then((res) => {
+            this._liked = res.likes.some((item) => {
+              return item._id === this._userId;
+            });
+
+            this._likeButton.classList.remove("icon-like_black");
+
+            this._cardLikesCount.textContent = res.likes.length;
+          })
+          .catch((err) => console.log(`Error al remover like: ${err}`))
+      : this._api
+          .addLike(cardId)
+          .then((res) => {
+            this._liked = res.likes.some((item) => {
+              return item._id === this._userId;
+            });
+
+            this._likeButton.classList.add("icon-like_black");
+
+            this._cardLikesCount.textContent = res.likes.length;
+          })
+          .catch((err) => console.log(`Error al añadir like: ${err}`));
   }
 
   _setEventsListeners() {

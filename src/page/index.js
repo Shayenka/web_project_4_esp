@@ -132,6 +132,7 @@ export function handleAddCardFormSubmit() {
       console.log(err);
     })
     .finally(() => {
+      console.log(submitButtonSelector);
       submitButtonSelector.textContent = "Guardar";
       cardForm.close();
     });

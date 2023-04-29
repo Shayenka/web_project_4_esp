@@ -31,26 +31,28 @@ export default class Card {
     this._liked
       ? this._api
           .removeLike(cardId)
-          .then((res) => {
-            this._liked = res.likes.some((item) => {
+          .then((likes) => {
+            console.log(likes);
+            this._liked = likes.some((item) => {
               return item._id === this._userId;
             });
 
             this._likeButton.classList.remove("icon-like_black");
 
-            this._cardLikesCount.textContent = res.likes.length;
+            this._cardLikesCount.textContent = likes.length;
           })
           .catch((err) => console.log(`Error al remover like: ${err}`))
       : this._api
           .addLike(cardId)
-          .then((res) => {
-            this._liked = res.likes.some((item) => {
+          .then((likes) => {
+            console.log(likes);
+            this._liked = likes.some((item) => {
               return item._id === this._userId;
             });
 
             this._likeButton.classList.add("icon-like_black");
 
-            this._cardLikesCount.textContent = res.likes.length;
+            this._cardLikesCount.textContent = likes.length;
           })
           .catch((err) => console.log(`Error al añadir like: ${err}`));
   }

@@ -25,6 +25,7 @@ export default class PopupWithForms extends Popup {
       const formData = this._getInputValues();
       this._handleFormSubmit(formData);
       evt.target.querySelector(".popup__button").textContent = "Cargando...";
+      console.log("como estas?");
     });
   }
 

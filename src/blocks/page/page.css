@@ -3,3 +3,8 @@
   width: 100vw;
 }
 
+@media screen and (min-width: 1280px) {
+  .page {
+    margin: 0 auto;
+  }
+}

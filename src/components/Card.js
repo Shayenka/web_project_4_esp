@@ -11,7 +11,7 @@ export default class Card {
     this._handleCardClick = handleCardClick;
     this._handleDeleteCard = handleDeleteCard;
     this._userId = data.owner._id;
-
+    this._id = data._id;
     this._cardSelector = cardSelector;
     this._api = new Api();
     this._liked = data.likes.some((item) => {

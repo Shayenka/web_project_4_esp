@@ -5,7 +5,7 @@ export default class Card {
   constructor(data, cardSelector, handleCardClick, handleDeleteCard) {
     this._name = data.name;
     this._link = data.link;
-    this._likes = data.likes.length;
+    this._likes = data.likes;
     this._cardId = data._id;
     this._likeCard = this._likeCard.bind(this);
     this._handleCardClick = handleCardClick;
@@ -27,34 +27,42 @@ export default class Card {
     return templateElement;
   }
 
+  _isLiked() {
+    return Boolean(
+      this._likes.some((item) => {
+        return item._id === this._userId;
+      })
+    );
+  }
+
   _likeCard(cardId) {
-    this._liked
-      ? this._api
-          .removeLike(cardId)
-          .then((likes) => {
-            console.log(likes);
-            this._liked = likes.some((item) => {
-              return item._id === this._userId;
-            });
+    if (this._isLiked()) {
+      this._api
+        .removeLike(cardId)
+        .then((likes) => {
+          this._liked = likes.some((item) => {
+            return item._id === this._userId;
+          });
 
-            this._likeButton.classList.remove("icon-like_black");
+          this._likeButton.classList.remove("icon-like_black");
 
-            this._cardLikesCount.textContent = likes.length;
-          })
-          .catch((err) => console.log(`Error al remover like: ${err}`))
-      : this._api
-          .addLike(cardId)
-          .then((likes) => {
-            console.log(likes);
-            this._liked = likes.some((item) => {
-              return item._id === this._userId;
-            });
+          this._cardLikesCount.textContent = likes.length;
+        })
+        .catch((err) => console.log(`Error al remover like: ${err}`));
+    } else {
+      this._api
+        .addLike(cardId)
+        .then((likes) => {
+          this._liked = likes.some((item) => {
+            return item._id === this._userId;
+          });
 
-            this._likeButton.classList.add("icon-like_black");
+          this._likeButton.classList.add("icon-like_black");
 
-            this._cardLikesCount.textContent = likes.length;
-          })
-          .catch((err) => console.log(`Error al añadir like: ${err}`));
+          this._cardLikesCount.textContent = likes.length;
+        })
+        .catch((err) => console.log(`Error al añadir like: ${err}`));
+    }
   }
 
   _setEventsListeners() {
@@ -84,7 +92,11 @@ export default class Card {
     this._likeButton = this._cardElement.querySelector(".icon-like");
     this._cardLikesCount =
       this._cardElement.querySelector(".likes-card__count");
-    this._cardLikesCount.textContent = this._likes;
+    this._cardLikesCount.textContent = this._likes.length;
+
+    if (this._isLiked()) {
+      this._likeButton.classList.add("icon-like_black");
+    }
   }
 
   generateCard() {

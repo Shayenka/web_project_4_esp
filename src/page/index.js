@@ -25,7 +25,8 @@ import {
   inputLink,
   inputLinkAvatar,
   profileAvatarImage,
-  submitButtonSelector,
+  submitButtonCard,
+  buttonSubmitProfile,
 } from "../components/constants.js";
 
 //Cargar la información del usuario desde el servidor
@@ -132,8 +133,7 @@ export function handleAddCardFormSubmit() {
       console.log(err);
     })
     .finally(() => {
-      console.log(submitButtonSelector);
-      submitButtonSelector.textContent = "Guardar";
+      submitButtonCard.textContent = "Crear";
       cardForm.close();
     });
 }
@@ -168,7 +168,7 @@ export function handleEditProfileFormSubmit() {
     })
 
     .finally(() => {
-      submitButtonSelector.textContent = "Guardar";
+      buttonSubmitProfile.textContent = "Guardar";
       editProfile.close();
     });
 }

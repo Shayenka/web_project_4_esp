@@ -49,7 +49,7 @@ const buttonDeleteCard = document.querySelector("#buttonDeleteCard");
 const popups = document.querySelectorAll(".popup");
 
 //Variable para enviar formulario
-const submitButtonSelector = document.querySelectorAll(".popup__button");
+const submitButtonCard = document.querySelector("#cardButton");
 
 //Variable identificador usuario perfil
 const userProfileId = "93de6497062267393a34f6f4";
@@ -85,6 +85,6 @@ export {
   buttonDeleteCard,
   inputLinkAvatar,
   profileAvatarImage,
-  submitButtonSelector,
+  submitButtonCard,
   userProfileId,
 };

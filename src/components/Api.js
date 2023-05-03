@@ -62,7 +62,6 @@ export default class Api {
       `https://around.nomoreparties.co/v1/web_es_05/cards/likes/${cardId}`,
       `PUT`
     ).then((result) => {
-      console.log(result);
       return result.likes;
     });
   }

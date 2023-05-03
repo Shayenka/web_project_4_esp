@@ -37,31 +37,25 @@ export default class Card {
 
   _likeCard(cardId) {
     if (this._isLiked()) {
-      this._api
-        .removeLike(cardId)
-        .then((likes) => {
-          this._liked = likes.some((item) => {
-            return item._id === this._userId;
-          });
+      this._api.removeLike(cardId).then((likes) => {
+        this._liked = likes.some((item) => {
+          return item._id === this._userId;
+        });
 
-          this._likeButton.classList.remove("icon-like_black");
+        this._likeButton.classList.remove("icon-like_black");
 
-          this._cardLikesCount.textContent = likes.length;
-        })
-        .catch((err) => console.log(`Error al remover like: ${err}`));
+        this._cardLikesCount.textContent = likes.length;
+      });
     } else {
-      this._api
-        .addLike(cardId)
-        .then((likes) => {
-          this._liked = likes.some((item) => {
-            return item._id === this._userId;
-          });
+      this._api.addLike(cardId).then((likes) => {
+        this._liked = likes.some((item) => {
+          return item._id === this._userId;
+        });
 
-          this._likeButton.classList.add("icon-like_black");
+        this._likeButton.classList.add("icon-like_black");
 
-          this._cardLikesCount.textContent = likes.length;
-        })
-        .catch((err) => console.log(`Error al añadir like: ${err}`));
+        this._cardLikesCount.textContent = likes.length;
+      });
     }
   }
 

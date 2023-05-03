@@ -32,40 +32,30 @@ import {
 //Cargar la información del usuario desde el servidor
 const userProfile = new UserInfo(profileName, profileOccupation);
 const api = new Api();
-api
-  .getUserInfo()
-  .then((userInfo) => {
-    userProfile.setUserInfo(userInfo);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+api.getUserInfo().then((userInfo) => {
+  userProfile.setUserInfo(userInfo);
+});
 
 //Cargar las tarjetas desde el servidor
-api
-  .getCards()
-  .then((infoCard) => {
-    const cardsList = new Section(
-      {
-        items: infoCard,
-        renderer: (item) => {
-          const newCard = new Card(
-            item,
-            ".element",
-            handleCardClick,
-            handleDeleteCard
-          );
-          const cardElement = newCard.generateCard();
-          cardsList.addItem(cardElement);
-        },
+api.getCards().then((infoCard) => {
+  const cardsList = new Section(
+    {
+      items: infoCard,
+      renderer: (item) => {
+        const newCard = new Card(
+          item,
+          ".element",
+          handleCardClick,
+          handleDeleteCard
+        );
+        const cardElement = newCard.generateCard();
+        cardsList.addItem(cardElement);
       },
-      ".elements"
-    );
-    cardsList.renderItems();
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+    },
+    ".elements"
+  );
+  cardsList.renderItems();
+});
 
 //POPUP MOSTRAR IMAGEN
 function handleCardClick(src, text) {
@@ -78,17 +68,10 @@ function handleDeleteCard(cardId, cardElement) {
   popupDeleteCard.classList.remove("popup_closed");
 
   buttonDeleteCard.addEventListener("click", () => {
-    cardElement.remove();
-
     const api = new Api();
-    api
-      .deleteCard(cardId)
-      .then((result) => {
-        console.log(`Tarjeta con id ${cardId} eliminada`);
-      })
-      .catch((error) => {
-        console.log(`Error al eliminar tarjeta con id ${cardId}: ${error}`);
-      });
+    api.deleteCard(cardId).then(() => {
+      cardElement.remove();
+    });
 
     popupDeleteCard.classList.add("popup_closed");
   });
@@ -129,9 +112,7 @@ export function handleAddCardFormSubmit() {
 
       cardsList.addItemToStart(cardElement);
     })
-    .catch((err) => {
-      console.log(err);
-    })
+
     .finally(() => {
       submitButtonCard.textContent = "Crear";
       cardForm.close();
@@ -162,9 +143,6 @@ export function handleEditProfileFormSubmit() {
     .editUserInfo(userData)
     .then((userInfo) => {
       userProfile.setUserInfo(userInfo);
-    })
-    .catch((err) => {
-      console.log(err);
     })
 
     .finally(() => {
@@ -216,9 +194,7 @@ export function handleChangeAvatarProfile() {
     .then(() => {
       newAvatar.close();
     })
-    .catch((err) => {
-      console.log(err);
-    })
+
     .finally(() => {
       submitButtonSelector.textContent = "Guardar";
     });

@@ -20,7 +20,6 @@ import {
   closePopupAvatar,
   popupDeleteCard,
   buttonClosePopupDelete,
-  buttonDeleteCard,
   inputTitle,
   inputLink,
   inputLinkAvatar,
@@ -42,12 +41,7 @@ api.getCards().then((infoCard) => {
     {
       items: infoCard,
       renderer: (item) => {
-        const newCard = new Card(
-          item,
-          ".element",
-          handleCardClick,
-          handleDeleteCard
-        );
+        const newCard = new Card(item, ".element", handleCardClick);
         const cardElement = newCard.generateCard();
         cardsList.addItem(cardElement);
       },
@@ -63,19 +57,19 @@ function handleCardClick(src, text) {
   openImage.open(src, text);
 }
 
-//FUNCIÓN ELIMINAR CARD
-function handleDeleteCard(cardId, cardElement) {
-  popupDeleteCard.classList.remove("popup_closed");
+// //FUNCIÓN ELIMINAR CARD
+// function handleDeleteCard(cardId, cardElement) {
+//   popupDeleteCard.classList.remove("popup_closed");
 
-  buttonDeleteCard.addEventListener("click", () => {
-    const api = new Api();
-    api.deleteCard(cardId).then(() => {
-      cardElement.remove();
-    });
+//   buttonDeleteCard.addEventListener("click", () => {
+//     const api = new Api();
+//     api.deleteCard(cardId).then(() => {
+//       cardElement.remove();
+//     });
 
-    popupDeleteCard.classList.add("popup_closed");
-  });
-}
+//     popupDeleteCard.classList.add("popup_closed");
+//   });
+// }
 
 buttonClosePopupDelete.addEventListener("click", () => {
   popupDeleteCard.classList.add("popup_closed");
@@ -93,12 +87,7 @@ export function handleAddCardFormSubmit() {
   api
     .addNewCard(cardData)
     .then((newCard) => {
-      const card = new Card(
-        newCard,
-        ".element",
-        handleCardClick,
-        handleDeleteCard
-      );
+      const card = new Card(newCard, ".element", handleCardClick);
       const cardElement = card.generateCard();
       const cardsList = new Section(
         {

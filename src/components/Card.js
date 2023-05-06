@@ -1,5 +1,6 @@
 import Api from "./Api.js";
-import { templateCard, userProfileId } from "./constants.js";
+import { templateCard, userProfileId, buttonDeleteCard } from "./constants.js";
+import Popup from "./Popup.js";
 
 export default class Card {
   constructor(data, cardSelector, handleCardClick, handleDeleteCard) {
@@ -10,6 +11,8 @@ export default class Card {
     this._likeCard = this._likeCard.bind(this);
     this._handleCardClick = handleCardClick;
     this._handleDeleteCard = handleDeleteCard;
+    this._popUpDeleteCard = new Popup("#popupDeleteCard");
+    this._popUpDeleteCardButton = document.querySelector("#buttonDeleteCard");
     this._userId = data.owner._id;
     this._id = data._id;
     this._cardSelector = cardSelector;
@@ -59,14 +62,29 @@ export default class Card {
     }
   }
 
+  handleDeleteCard(cardId) {
+    this._popUpDeleteCard.open();
+
+    const onDeleteButtonClick = () => {
+      this._api.deleteCard(cardId).then(() => {
+        this._cardElement.remove();
+        this._popUpDeleteCard.close();
+        buttonDeleteCard.removeEventListener("click", onDeleteButtonClick);
+      });
+    };
+
+    buttonDeleteCard.addEventListener("click", onDeleteButtonClick);
+  }
+
   _setEventsListeners() {
     this._likeButton.addEventListener("click", () =>
       this._likeCard(this._cardId)
     );
+
     if (this._userId === userProfileId) {
-      this._buttonDelete.addEventListener("click", () =>
-        this._handleDeleteCard(this._cardId, this._cardElement)
-      );
+      this._buttonDelete.addEventListener("click", () => {
+        this.handleDeleteCard(this._cardId);
+      });
     } else {
       this._buttonDelete.remove();
     }

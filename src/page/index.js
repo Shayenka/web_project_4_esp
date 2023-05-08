@@ -57,20 +57,7 @@ function handleCardClick(src, text) {
   openImage.open(src, text);
 }
 
-// //FUNCIÓN ELIMINAR CARD
-// function handleDeleteCard(cardId, cardElement) {
-//   popupDeleteCard.classList.remove("popup_closed");
-
-//   buttonDeleteCard.addEventListener("click", () => {
-//     const api = new Api();
-//     api.deleteCard(cardId).then(() => {
-//       cardElement.remove();
-//     });
-
-//     popupDeleteCard.classList.add("popup_closed");
-//   });
-// }
-
+//CERRAR POPUP ELIMINAR CARD
 buttonClosePopupDelete.addEventListener("click", () => {
   popupDeleteCard.classList.add("popup_closed");
 });

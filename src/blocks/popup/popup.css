@@ -14,9 +14,8 @@
   opacity: 1;
 }
 
-.popup > .image-show {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s, opacity 0.5s linear;
+.popup:hover > .image-show {
+  visibility: visible;
+  opacity: 1;
 }
 

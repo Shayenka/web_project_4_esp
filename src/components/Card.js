@@ -3,14 +3,13 @@ import { templateCard, userProfileId, buttonDeleteCard } from "./constants.js";
 import Popup from "./Popup.js";
 
 export default class Card {
-  constructor(data, cardSelector, handleCardClick, handleDeleteCard) {
+  constructor(data, cardSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;
     this._cardId = data._id;
     this._likeCard = this._likeCard.bind(this);
     this._handleCardClick = handleCardClick;
-    this._handleDeleteCard = handleDeleteCard;
     this._popUpDeleteCard = new Popup("#popupDeleteCard");
     this._popUpDeleteCardButton = document.querySelector("#buttonDeleteCard");
     this._userId = data.owner._id;
